@@ -38,6 +38,15 @@ class Klarna_Start extends klarna_base_config
         $this->setEditObjectId($sShopOXID);
 
         parent::render();
+        $oCountryList = oxNew('oxCountryList');
+        $countries = array('DE', 'GB', 'AT', 'NO', 'NL', 'FI', 'SE');
+        $oSupportedCountryList = $oCountryList->getKalarnaCountriesTitles(
+            $this->getViewDataElement('adminlang'),
+            $countries
+        );
+
+        $this->addTplParam('countries', $oSupportedCountryList);
+
 
         return $this->_sThisTemplate;
     }

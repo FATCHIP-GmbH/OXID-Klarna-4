@@ -274,7 +274,6 @@ oder wenden Sie sich an den Klarna Integration Support.',
     'KL_ANONYMIZED_PRODUCT_TOOLTIP'   => 'Geben Sie hier die Zeichenfolge ein, die anstatt des tatsächlichen Produkttitels an Klarna gesendet werden soll.',
     'KL_NO_REQUESTS_WILL_BE_SENT'     => 'Ihre Änderungen an dieser Bestellung werden nicht an Klarna übertragen.',
     'KL_USER_GUIDE'                   => 'Benutzerhandbuch',
-    'KL_ONBOARDING_FLOW_BUTTON'       => 'Zugangsdaten beantragen',
 
 
     'TCKLARNA_CUSTOMER_TYPE' => 'Unterstützte Kundenarten',
@@ -282,5 +281,22 @@ oder wenden Sie sich an den Klarna Integration Support.',
     'TCKLARNA_B2C' => 'Nur B2C Kunden',
     'TCKLARNA_B2B' => 'Nur B2B Kunden',
     'TCKLARNA_B2BOTH' => 'Sowohl B2C als auch B2B Kunden',
+
+    'TCKLARNA_EASY'                => 'So einfach ist es, Klarna zu aktiveren',
+    'TCKLARNA_PAY_LATER.'          => 'Später bezahlen.',
+    'TCKLARNA_PAY_LATER_START'     => 'Für Kunden, die jetzt kaufen und bequem später bezahlen möchten.',
+    'TCKLARNA_SLICE_IT.'           => 'In Raten bezahlen.',
+    'TCKLARNA_SLICE_IT_START'      => '​Steigern Sie die Kaufkraft Ihrer Kunden durch Zahlung in Raten. ',
+    'TCKLARNA_PAY_NOW.'            => 'Sofort bezahlen.',
+    'TCKLARNA_PAY_NOW_START'       => 'Einfache und schnelle Direktbezahlung mit Klarna‘s Sofort bezahlen. In Deutschland sollten Sofortüberweisung und Lastschrift im Portfolio nicht fehlen.',
+    'TCKLARNA_CHECKOUT'            => 'Der Klarna Checkout.​',
+    'TCKLARNA_CHECKOUT_START'      => 'Das beste Checkout-Erlebnis für Ihre Kunden. Zuverlässige Kundenidentifizierung und Versandauswahl. Alle Zahlungen inklusive. Weltweite Verfügbarkeit, lokal optimiert. Wir übernehmen das ganze Risiko und Sie erhalten immer Ihr Geld. ',
+    'TCKLARNA_REGISTER_NOW_BUTTON' => 'Registrieren',
+    'TCKLARNA_LEARN_MORE_BUTTON'   => 'Mehr erfahren',
+    'TCKLARNA_NEED_SUPPORT'        => 'Need support with the integration?',
+    'TCKLARNA_REACH_SUPPORT'       => 'Reach out to Klarna\'s Merchant support',
+
+
+
 
 );
