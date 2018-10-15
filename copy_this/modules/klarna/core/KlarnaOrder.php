@@ -67,6 +67,11 @@ class KlarnaOrder extends oxBase
         parent::__construct();
 
         $this->_oUser = $oUser;
+        $oConfig           = oxRegistry::getConfig();
+        $urlShopParam      = method_exists($oConfig, 'mustAddShopIdToRequest')
+                             && $oConfig->mustAddShopIdToRequest()
+            ? '&shp=' . $oConfig->getShopId()
+            : '';
 
         $sSSLShopURL       = oxRegistry::getConfig()->getSslShopUrl();
         $sCountryISO       = $this->_oUser->resolveCountry();
@@ -93,11 +98,11 @@ class KlarnaOrder extends oxBase
                 "terms"        =>
                     $terms,
                 "checkout"     =>
-                    $sSSLShopURL . "?cl=klarna_express",
+                    $sSSLShopURL . "?cl=klarna_express$urlShopParam",
                 "confirmation" =>
-                    $sSSLShopURL . "?cl=order&fnc=execute&klarna_order_id={checkout.order.id}&stoken=$sGetChallenge",
+                    $sSSLShopURL . "?cl=order&fnc=execute&klarna_order_id={checkout.order.id}$urlShopParam&stoken=$sGetChallenge",
                 "push"         =>
-                    $sSSLShopURL . "?cl=klarna_acknowledge&klarna_order_id={checkout.order.id}",
+                    $sSSLShopURL . "?cl=klarna_acknowledge&klarna_order_id={checkout.order.id}$urlShopParam",
 
             ),
         );
@@ -309,22 +314,27 @@ class KlarnaOrder extends oxBase
 
         $externalPaymentMethods  = array();
         $externalCheckoutMethods = array();
-
+        $oConfig = oxRegistry::getConfig();
         $paymentList = $oPayList->getPaymentList($oBasket->getShippingId(), $dBasketPrice, $oUser);
         foreach ($paymentList as $paymentId => $oPayment) {
             $oPayment->calculate($oBasket);
             $aCountryISO = $this->getKlarnaCountryListByPayment($oPayment, $this->getKlarnaCountryList());
             $oPrice      = $oPayment->getPrice();
+
+            $requestParams = method_exists($oConfig, 'mustAddShopIdToRequest')
+                             && $oConfig->mustAddShopIdToRequest()
+                ? '&shp=' . $oConfig->getShopId()
+                : '';
+
             if ($oPayment->oxpayments__klexternalpayment->value) {
 
-                $requestParams = '';
                 if ($paymentId === 'oxidpaypal') {
-                    $requestParams = '&displayCartInPayPal=1';
+                    $requestParams .= '&displayCartInPayPal=1';
                 }
 
                 $externalPaymentMethods[] = array(
                     'name'         => $oPayment->oxpayments__klexternalname->value,
-                    'redirect_url' => oxRegistry::getConfig()->getSslShopUrl() .
+                    'redirect_url' => $oConfig->getSslShopUrl() .
                                       'index.php?cl=order&fnc=klarnaExternalPayment&payment_id=' . $paymentId . $requestParams,
                     'image_url'    => $this->resolveImageUrl($oPayment),
                     'fee'          => KlarnaUtils::parseFloatAsInt($oPrice->getBruttoPrice() * 100),
@@ -337,7 +347,7 @@ class KlarnaOrder extends oxBase
                 $requestParams             = '&externalCheckout=1';
                 $externalCheckoutMethods[] = array(
                     'name'         => $oPayment->oxpayments__klexternalname->value,
-                    'redirect_url' => oxRegistry::getConfig()->getSslShopUrl() .
+                    'redirect_url' => $oConfig->getSslShopUrl() .
                                       'index.php?cl=order&fnc=klarnaExternalPayment&payment_id=' . $paymentId . $requestParams,
                     'image_url'    => $this->resolveImageUrl($oPayment, true),
                     'fee'          => KlarnaUtils::parseFloatAsInt($oPrice->getBruttoPrice() * 100),

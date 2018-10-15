@@ -171,7 +171,7 @@ class klarna_express extends oxUBase
             KlarnaUtils::fullyResetKlarnaSession();
             oxRegistry::get("oxUtilsView")->addErrorToDisplay(
                 oxRegistry::getLang()->translateString('KLARNA_UNAUTHORIZED_REQUEST', null, true));
-            oxRegistry::getUtils()->redirect(oxRegistry::getConfig()->getShopHomeURL() . 'cl=start', true, 301);
+            oxRegistry::getUtils()->redirect(oxRegistry::getConfig()->getShopSecureHomeURL() . 'cl=start', true, 301);
 
             return $this->_sThisTemplate;
         } catch (oxException $oEx) {
@@ -523,22 +523,16 @@ class klarna_express extends oxUBase
         /** @var KlarnaUser|User $oUser */
         if ($oUser = $this->getUser() && !empty($oUser->oxuser__oxpassword->value)) {
             $oUser->checkUserType();
-//        } else if ($oSession->hasVariable('oFakeKlarnaUser')) {
-//            $oUser = $oSession->getVariable('oFakeKlarnaUser');
         } else {
             $email = $oSession->getVariable('klarna_checkout_user_email');
             /** @var KlarnaUser|User $oUser */
             $oUser = KlarnaUtils::getFakeUser($email);
         }
 
-//        $oSession->setVariable('oFakeKlarnaUser', $oUser);
-
-
         return $oUser;
     }
 
     /**
-     * @return string
      */
     protected function checkSsl()
     {

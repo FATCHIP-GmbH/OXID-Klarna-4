@@ -24,6 +24,16 @@ if (!Array.prototype.remove) {
     };
 }
 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
 var KlarnaApi;
 
 (function () {
@@ -109,24 +119,9 @@ var KlarnaApi;
                 );
             },
 
-            // submitAddress: function (event) {
-            //
-            //     event.preventDefault();
-            //     var formData = this.$form.serializeArray();
-            //     this.sendRequest($.post(this.$form.attr('action'), formData),
-            //         function (response) {
-            //             return;
-            //         }
-            //     );
-            //
-            //     $(event.target).closest('.drop-container').removeClass('active')
-            //         .find('.drop-content').hide(400);
-            // },
-
             onInit: function () {
 
                 this.$items.click(this.selectAddress.bind(this));
-                // this.$submitButton.click(this.submitAddress.bind(this));
             }
         }
     );
@@ -182,6 +177,9 @@ var KlarnaApi;
     window._klarnaCheckout(function (api) {
         KlarnaApi = api;
 
+        var urlShopId = getParameterByName('shp', window.location.search);
+        var urlShopParam = urlShopId ? '&shp=' + urlShopId : '';
+
         /** vars track changes of this values during the 'change' event */
         var country, eventsInProgress = [];
 
@@ -200,7 +198,7 @@ var KlarnaApi;
             return $.ajax({
                 type: 'POST',
                 dataType: 'json',
-                url: '?cl=order&fnc=updateKlarnaAjax',
+                url: '?cl=order&fnc=updateKlarnaAjax'  + urlShopParam,
                 data: JSON.stringify(data),
                 statusCode: {
                     200: function () {

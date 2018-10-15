@@ -44,7 +44,6 @@ class Klarna_OxCmp_User extends Klarna_OxCmp_User_parent
         $oViewConfig = oxNew('oxviewconfig');
         if ($oViewConfig->isKlarnaCheckoutEnabled()) {
             KlarnaUtils::fullyResetKlarnaSession();
- //           oxRegistry::getSession()->deleteVariable('oFakeKlarnaUser');
             oxRegistry::getSession()->deleteVariable('sFakeUserId');
             if ($this->klarnaRedirect()) {
                 oxRegistry::getUtils()->redirect(

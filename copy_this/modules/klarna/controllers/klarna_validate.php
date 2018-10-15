@@ -38,7 +38,7 @@ class klarna_validate extends oxUBase
             oxRegistry::getUtils()->showMessageAndExit('');
         } else {
             $sid         = oxRegistry::getConfig()->getRequestParameter('s');
-            $redirectUrl = oxRegistry::getConfig()->getSslShopUrl() . "index.php?cl=basket&force_sid=$sid&klarnaInvalid=1&";
+            $redirectUrl = oxRegistry::getConfig()->getShopSecureHomeURL() . "index.php?cl=basket&force_sid=$sid&klarnaInvalid=1&";
             $redirectUrl .= http_build_query($validator->getResultErrors());
             $responseStatus = 303;
 

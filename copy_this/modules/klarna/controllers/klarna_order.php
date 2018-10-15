@@ -58,8 +58,13 @@ class Klarna_Order extends Klarna_Order_parent
         parent::init();
 
         if (KlarnaUtils::isKlarnaCheckoutEnabled()) {
+            $oConfig = oxRegistry::getConfig();
+            $shopParam = method_exists($oConfig, 'mustAddShopIdToRequest')
+                         && $oConfig->mustAddShopIdToRequest()
+                ? '&shp=' . $oConfig->getShopId()
+                : '';
             $oBasket        = oxRegistry::getSession()->getBasket();
-            $this->selfUrl  = oxRegistry::getConfig()->getShopSecureHomeUrl() . 'cl=klarna_express';
+            $this->selfUrl  = $oConfig->getShopSecureHomeUrl() . 'cl=klarna_express';
             if (oxRegistry::getConfig()->getRequestParameter('externalCheckout') == 1) {
                 oxRegistry::getSession()->setVariable('externalCheckout', true);
             }
@@ -69,7 +74,7 @@ class Klarna_Order extends Klarna_Order_parent
                 if ($newCountry = $this->isCountryChanged()) {
                     $this->_aOrderData = array(
                         'merchant_urls'    => array(
-                            'checkout' => oxRegistry::getConfig()->getSslShopUrl() . "?cl=klarna_express",
+                            'checkout' => $oConfig->getSslShopUrl() . "?cl=klarna_express" . $shopParam,
                         ),
                         'billing_address'  => array(
                             'country' => $newCountry,
@@ -783,16 +788,11 @@ class Klarna_Order extends Klarna_Order_parent
      */
     protected function _initUser()
     {
-        $oSession = $this->getSession();
-
         if ($this->_oUser = $this->getUser()) {
+            $this->_oUser->kl_setType(Klarna_oxUser::NOT_REGISTERED);
             if ($this->getViewConfig()->isUserLoggedIn()) {
                 $this->_oUser->kl_setType(Klarna_oxUser::LOGGED_IN);
-            } else {
-                $this->_oUser->kl_setType(Klarna_oxUser::NOT_REGISTERED);
             }
- //       } else if ($oSession->hasVariable('oFakeKlarnaUser')) {
- //           $this->_oUser = $oSession->getVariable('oFakeKlarnaUser');
         } else {
             $this->_oUser = KlarnaUtils::getFakeUser($this->_aOrderData['billing_address']['email']);
         }
@@ -839,8 +839,6 @@ class Klarna_Order extends Klarna_Order_parent
                     $this->_oUser->logout();
                 }
             }
-        } else {
-    //        $this->getSession()->setVariable('oFakeKlarnaUser', $this->_oUser);
         }
     }
 

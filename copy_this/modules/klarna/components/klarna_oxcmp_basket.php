@@ -39,8 +39,9 @@ class Klarna_OxCmp_basket extends Klarna_OxCmp_basket_parent
         $this->tobasket();
 
         if (oxRegistry::getSession()->getVariable('_newitem') !== null) {
+            $oConfig = oxRegistry::getConfig();
             oxRegistry::getUtils()->redirect(
-                oxRegistry::getConfig()->getShopSecureHomeUrl() . 'cl=' . $this->_sRedirectController . '',
+                $oConfig->getShopSecureHomeUrl() . 'cl=' . $this->_sRedirectController . '',
                 false,
                 302
             );

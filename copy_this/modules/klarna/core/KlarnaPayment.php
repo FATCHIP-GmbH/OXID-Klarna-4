@@ -116,8 +116,13 @@ class KlarnaPayment extends oxBase
      */
     public function __construct(oxBasket $oBasket, oxUser $oUser, $aPost = array())
     {
+        $oConfig          = oxRegistry::getConfig();
+        $shopUrlParam     = method_exists($oConfig, 'mustAddShopIdToRequest')
+                            && $oConfig->mustAddShopIdToRequest()
+            ? '&shp=' . $oConfig->getShopId()
+            : '';
         $controllerName   = $this->isAuthorized() ? 'order' : 'payment';
-        $this->refreshUrl = oxRegistry::getConfig()->getSslShopUrl() . "?cl=$controllerName";
+        $this->refreshUrl = $oConfig->getSslShopUrl() . "?cl=$controllerName" . $shopUrlParam;
 
         $this->aUpdateData            = array();
         $this->oUser                  = $oUser;
@@ -145,7 +150,7 @@ class KlarnaPayment extends oxBase
             "purchase_country"  => $sCountryISO,
             "purchase_currency" => $currencyISO,
             "merchant_urls"     => array(
-                "confirmation" => oxRegistry::getConfig()->getSslShopUrl() . "?cl=order&oxdownloadableproductsagreement=1&fnc=execute&stoken=" . $sToken,
+                "confirmation" => $oConfig->getSslShopUrl() . "?cl=order&oxdownloadableproductsagreement=1&fnc=execute&stoken=" . $sToken . $shopUrlParam,
             ),
         );
 
