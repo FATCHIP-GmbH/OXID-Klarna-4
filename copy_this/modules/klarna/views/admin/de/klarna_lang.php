@@ -293,8 +293,8 @@ oder wenden Sie sich an den Klarna Integration Support.',
     'TCKLARNA_CHECKOUT_START'      => 'Das beste Checkout-Erlebnis für Ihre Kunden. Zuverlässige Kundenidentifizierung und Versandauswahl. Alle Zahlungen inklusive. Weltweite Verfügbarkeit, lokal optimiert. Wir übernehmen das ganze Risiko und Sie erhalten immer Ihr Geld. ',
     'TCKLARNA_REGISTER_NOW_BUTTON' => 'Registrieren',
     'TCKLARNA_LEARN_MORE_BUTTON'   => 'Mehr erfahren',
-    'TCKLARNA_NEED_SUPPORT'        => 'Need support with the integration?',
-    'TCKLARNA_REACH_SUPPORT'       => 'Reach out to Klarna\'s Merchant support',
+    'TCKLARNA_NEED_SUPPORT'        => 'Benötigen Sie Hilfe bei der Integration?',
+    'TCKLARNA_REACH_SUPPORT'       => 'Kontaktieren Sie Klarna‘s Merchant Support',
 
 
 

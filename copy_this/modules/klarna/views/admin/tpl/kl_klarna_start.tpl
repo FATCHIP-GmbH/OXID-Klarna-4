@@ -33,106 +33,108 @@
             <h1 class="top-0">[{oxmultilang ident="TCKLARNA_EASY"}]</h1>
             <div class="video-box">
                 <a href="https://hello.klarna.com/rs/778-XGY-327/images/How_to_OXID.mp4" target="_blank">
-                    <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/src/img/video-scene.jpg') }]">
+                    <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/img/video-scene.jpg') }]">
                 </a>
             </div>
-            <div class="start_user_guide">
-                <div class="user-guide-img">
-                    <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/src/img/171020_Klarna_Icons_100x100_171006_Klarna_icon_100x100_Topic.svg') }]" height="60px" width="60px">
-                </div>
+            <div class="pl-10">
+                <div class="start_user_guide">
+                    <div class="user-guide-img">
+                        <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/img/171020_Klarna_Icons_100x100_171006_Klarna_icon_100x100_Topic.svg') }]" height="60px" width="60px">
+                    </div>
 
-                <div class="user-guide-text">
-                    <p>[{ "KL_USER_GUIDE_DESCRIPTION"|oxmultilangassign }]</p>
+                    <div class="user-guide-text">
+                        <p>[{ "KL_USER_GUIDE_DESCRIPTION"|oxmultilangassign }]</p>
+                    </div>
+                    <div class="user-guide-download">
+                        <a href="[{$oView->getManualDownloadLink()}]" target="_blank">
+                            <button class="btn-save">Download</button>
+                        </a>
+                    </div>
                 </div>
-                <div class="user-guide-download">
-                    <a href="[{$oView->getManualDownloadLink()}]" target="_blank">
-                        <button class="btn-save">Download</button>
-                    </a>
-                </div>
+                <h1>[{oxmultilang ident="TCKLARNA_NEED_SUPPORT"}]</h1>
+                <h2>[{oxmultilang ident="TCKLARNA_REACH_SUPPORT"}]</h2>
+                <table class="support">
+                    <tr>
+                        <td>
+                            <h1>[{$countries.DE}]</h1>
+                            <div class="">
+                                [{oxmultilang ident="KL_EMAIL"}]: shop@klarna.de<br>
+                                [{oxmultilang ident="KL_PHONE"}]: (+49) 221 669 501 30<br>
+                                [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
+                                [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 17:00<br>
+                            </div>
+                        </td>
+                        <td>
+                            <h1>[{$countries.GB}]</h1>
+                            <div class="">
+                                [{oxmultilang ident="KL_EMAIL"}]: merchant@klarna.co.uk<br>
+                                [{oxmultilang ident="KL_PHONE"}]: (+358) 09-425 99 773<br>
+                                [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
+                                [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 17:00<br>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h1>[{$countries.AT}]</h1>
+                            <div class="">
+                                [{oxmultilang ident="KL_EMAIL"}]: merchant@klarna.at<br>
+                                [{oxmultilang ident="KL_PHONE"}]: (+43) 720 883 820<br>
+                                [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
+                                [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 17:00<br>
+                            </div>
+                        </td>
+                        <td>
+                            <h1>[{$countries.NO}]</h1>
+                            <div class="">
+                                [{oxmultilang ident="KL_EMAIL"}]: merchant@klarna.no<br>
+                                [{oxmultilang ident="KL_PHONE"}]: (+47) 210 49 600<br>
+                                [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
+                                [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 17:00<br>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h1>[{$countries.NL}]</h1>
+                            <div class="">
+                                [{oxmultilang ident="KL_EMAIL"}]: webwinkel@klarna.nl<br>
+                                [{oxmultilang ident="KL_PHONE"}]: (+31) 20 808 2853<br>
+                                [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
+                                [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 17:00<br>
+                            </div>
+                        </td>
+                        <td>
+                            <h1>[{$countries.FI}]</h1>
+                            <div class="">
+                                [{oxmultilang ident="KL_EMAIL"}]: kauppa@klarna.fi<br>
+                                [{oxmultilang ident="KL_PHONE"}]: (+358) 09-425 99 773<br>
+                                [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
+                                [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 18:00<br>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h1>[{$countries.SE}]</h1>
+                            <div class="">
+                                [{oxmultilang ident="KL_EMAIL"}]: shop@klarna.se<br>
+                                [{oxmultilang ident="KL_PHONE"}]: (+46) 08-120 120 30<br>
+                                [{oxmultilang ident="KL_BUSINESS_HOURS"}]:<br>
+                                [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_THURSDAY"}]: 8:00 - 19:00<br>
+                                [{oxmultilang ident="KL_FRIDAY"}]: 8:30 - 17:00<br>
+                                [{oxmultilang ident="KL_SATURDAY"}] - [{oxmultilang ident="KL_MONDAY"}]: 10:00 - 17:00
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <h1>[{oxmultilang ident="TCKLARNA_NEED_SUPPORT"}]</h1>
-            <h2>[{oxmultilang ident="TCKLARNA_REACH_SUPPORT"}]</h2>
-            <table class="support">
-                <tr>
-                    <td>
-                        <h1>[{$countries.DE}]</h1>
-                        <div class="">
-                            [{oxmultilang ident="KL_EMAIL"}]: shop@klarna.de<br>
-                            [{oxmultilang ident="KL_PHONE"}]: (+49) 221 669 501 30<br>
-                            [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
-                            [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 17:00<br>
-                        </div>
-                    </td>
-                    <td>
-                        <h1>[{$countries.GB}]</h1>
-                        <div class="">
-                            [{oxmultilang ident="KL_EMAIL"}]: merchant@klarna.co.uk<br>
-                            [{oxmultilang ident="KL_PHONE"}]: (+358) 09-425 99 773<br>
-                            [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
-                            [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 17:00<br>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h1>[{$countries.AT}]</h1>
-                        <div class="">
-                            [{oxmultilang ident="KL_EMAIL"}]: merchant@klarna.at<br>
-                            [{oxmultilang ident="KL_PHONE"}]: (+43) 720 883 820<br>
-                            [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
-                            [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 17:00<br>
-                        </div>
-                    </td>
-                    <td>
-                        <h1>[{$countries.NO}]</h1>
-                        <div class="">
-                            [{oxmultilang ident="KL_EMAIL"}]: merchant@klarna.no<br>
-                            [{oxmultilang ident="KL_PHONE"}]: (+47) 210 49 600<br>
-                            [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
-                            [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 17:00<br>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h1>[{$countries.NL}]</h1>
-                        <div class="">
-                            [{oxmultilang ident="KL_EMAIL"}]: webwinkel@klarna.nl<br>
-                            [{oxmultilang ident="KL_PHONE"}]: (+31) 20 808 2853<br>
-                            [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
-                            [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 17:00<br>
-                        </div>
-                    </td>
-                    <td>
-                        <h1>[{$countries.FI}]</h1>
-                        <div class="">
-                            [{oxmultilang ident="KL_EMAIL"}]: kauppa@klarna.fi<br>
-                            [{oxmultilang ident="KL_PHONE"}]: (+358) 09-425 99 773<br>
-                            [{oxmultilang ident="KL_BUSINESS_HOURS"}]:
-                            [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_FRIDAY"}]: 8:00 - 18:00<br>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h1>[{$countries.SE}]</h1>
-                        <div class="">
-                            [{oxmultilang ident="KL_EMAIL"}]: shop@klarna.se<br>
-                            [{oxmultilang ident="KL_PHONE"}]: (+46) 08-120 120 30<br>
-                            [{oxmultilang ident="KL_BUSINESS_HOURS"}]:<br>
-                            [{oxmultilang ident="KL_MONDAY"}] - [{oxmultilang ident="KL_THURSDAY"}]: 8:00 - 19:00<br>
-                            [{oxmultilang ident="KL_FRIDAY"}]: 8:30 - 17:00<br>
-                            [{oxmultilang ident="KL_SATURDAY"}] - [{oxmultilang ident="TCKLARNA_MONDAY"}]: 10:00 - 17:00
-                        </div>
-                    </td>
-                </tr>
-            </table>
         </div>
         <div class="w5">
             <div class="klarna-brands">
                 <div>
                     <div class="w5">
-                        <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/src/img/171020_Klarna_Icons_100x100_171006_Klarna_icon_100x100_Methods_Pay_Now.svg') }]">
+                        <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/img/171020_Klarna_Icons_100x100_171006_Klarna_icon_100x100_Methods_Pay_Now.svg') }]">
                     </div>
                     <div class="w7">
                         <h4>[{oxmultilang ident="TCKLARNA_PAY_NOW."}]</h4>
@@ -141,7 +143,7 @@
                 </div>
                 <div>
                     <div class="w5">
-                        <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/src/img/171020_Klarna_Icons_100x100_171006_Klarna_icon_100x100_Methods_Pay_Later.svg') }]">
+                        <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/img/171020_Klarna_Icons_100x100_171006_Klarna_icon_100x100_Methods_Pay_Later.svg') }]">
                     </div>
                     <div class="w7">
                         <h4>[{oxmultilang ident="TCKLARNA_PAY_LATER."}]</h4>
@@ -150,7 +152,7 @@
                 </div>
                 <div>
                     <div class="w5">
-                        <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/src/img/171020_Klarna_Icons_100x100_171006_Klarna_icon_100x100_Methods_Pay_Slice_It.svg') }]" class="noty-pizza">
+                        <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/img/171020_Klarna_Icons_100x100_171006_Klarna_icon_100x100_Methods_Pay_Slice_It.svg') }]" class="noty-pizza">
                     </div>
                     <div class="w7">
                         <h4>[{oxmultilang ident="TCKLARNA_SLICE_IT."}]</h4>
@@ -159,7 +161,7 @@
                 </div>
                 <div>
                     <div class="w5">
-                        <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/src/img/171020_Klarna_Icons_100x100_Black_171006_Klarna_icon_100x100_autofill.svg') }]">
+                        <img src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/img/171020_Klarna_Icons_100x100_Black_171006_Klarna_icon_100x100_autofill.svg') }]">
                     </div>
                     <div class="w7">
                         <h4>[{oxmultilang ident="TCKLARNA_CHECKOUT"}]</h4>
