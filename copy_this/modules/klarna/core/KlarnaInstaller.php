@@ -65,6 +65,8 @@ class KlarnaInstaller extends shop_config
         $instance->addActions();
 
         $instance->addKlarnaPaymentsMethods();
+
+        $instance->updateViews();
     }
 
     /**

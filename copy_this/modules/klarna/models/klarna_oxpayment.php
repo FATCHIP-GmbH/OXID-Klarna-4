@@ -159,8 +159,11 @@ class klarna_oxpayment extends klarna_oxpayment_parent
 
         $oSession = oxRegistry::getSession();
         if ($sessionData = $oSession->getVariable('klarna_session_data')) {
-            $methodData = array_search($klName, array_column($sessionData['payment_method_categories'], 'identifier'));
-            if ($methodData !== null) {
+            $methodData = array_search($klName, array_map(
+                function($item){return $item['identifier'];},
+                $sessionData['payment_method_categories'])
+            );
+            if ($methodData !== false) {
 
                 return $sessionData['payment_method_categories'][$methodData]['asset_urls'][$variant];
             }
