@@ -209,7 +209,7 @@ class Klarna_oxOrder extends Klarna_oxOrder_parent
      */
     public function getAllCaptures($orderId, $sCountryISO = null)
     {
-        $client = $this->getKlarnaClient($sCountryISO);
+        $client = KlarnaOrderManagementClient::getInstance($sCountryISO);
 
         return $client->getAllCaptures($orderId);
     }
@@ -223,7 +223,7 @@ class Klarna_oxOrder extends Klarna_oxOrder_parent
      */
     public function retrieveKlarnaOrder($orderId, $sCountryISO = null)
     {
-        $client = $this->getKlarnaClient($sCountryISO);
+        $client = KlarnaOrderManagementClient::getInstance($sCountryISO);
 
         return $client->getOrder($orderId);
     }
@@ -239,7 +239,7 @@ class Klarna_oxOrder extends Klarna_oxOrder_parent
      */
     public function createOrderRefund($data, $orderId, $sCountryISO = null)
     {
-        $client = $this->getKlarnaClient($sCountryISO);
+        $client = KlarnaOrderManagementClient::getInstance($sCountryISO);
 
         return $client->createOrderRefund($data, $orderId);
     }
@@ -256,7 +256,7 @@ class Klarna_oxOrder extends Klarna_oxOrder_parent
      */
     public function addShippingToCapture($data, $orderId, $captureId, $sCountryISO = null)
     {
-        $client = $this->getKlarnaClient($sCountryISO);
+        $client = KlarnaOrderManagementClient::getInstance($sCountryISO);
 
         return $client->addShippingToCapture($data, $orderId, $captureId);
     }

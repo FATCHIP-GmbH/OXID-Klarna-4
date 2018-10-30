@@ -57,8 +57,11 @@ class KlarnaInstaller extends shop_config
     public static function onActivate()
     {
         $instance = self::getInstance();
+        $instance->updateViews();
 
         $instance->extendDbTables();
+
+        $instance->updateViews();
 
         $instance->addConfigVars();
 

@@ -1,5 +1,5 @@
 -- Title
-Klarna OXID Module
+Klarna Checkout and Klarna Payments Module for the OXID eShop
 
 
 -- Author
@@ -23,7 +23,7 @@ integration@klarna.de
 
 
 -- Description
- Klarna OXID Module for OXID CE/PE 4.7.0 - 4.10.x and OXID EE 5.0.0 - 5.3.x
+ Klarna Checkout and Klarna Payments Module for the OXID eShop CE/PE 4.7.0 - 4.10.x and EE 5.0.0 - 5.3.x
 
 
 
