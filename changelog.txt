@@ -1,3 +1,6 @@
+### upcoming release
+* BugFix on admin KlarnaConfiguration page in KP mode: Changes were not saved due to wrong cl parameter
+
 ### 4.2.0
 * Link BugFix for EE
 * Design changes in the admin panel
