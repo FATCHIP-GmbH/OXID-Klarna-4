@@ -43,7 +43,6 @@ class Klarna_General extends klarna_base_config
             'kl_notSetUpCountries',
             array_diff_key($this->_aKlarnaCountries, $this->_aKlarnaCountryCreds) ?: false
         );
-        $this->addTplParam('activeCountries', KlarnaUtils::getKlarnaGlobalActiveShopCountries($this->_aViewData['adminlang']));
         $this->addTplParam('b2options', array('B2C', 'B2B', 'B2BOTH'));
 
         return $this->_sThisTemplate;
@@ -71,12 +70,11 @@ class Klarna_General extends klarna_base_config
     protected function convertNestedParams($nestedArray)
     {
         /*** get Country Specific Credentials Config Keys for all Klarna Countries ***/
-        $aCountrySpecificCredsConfigKeys = array_map(
-            function ($countryISO) {
-                return 'aKlarnaCreds_' . $countryISO;
-            },
-            array_keys($this->getKlarnaCountryAssocList())
-        );
+        $db  = oxDb::getDb(oxDb::FETCH_MODE_ASSOC);
+        $sql = "SELECT oxvarname
+                FROM oxconfig 
+                WHERE oxvarname LIKE 'aKlarnaCreds_%'";
+        $aCountrySpecificCredsConfigKeys = $db->getCol($sql);
 
         if (is_array($nestedArray)) {
             foreach ($nestedArray as $key => $arr) {
@@ -105,13 +103,13 @@ class Klarna_General extends klarna_base_config
             return $this->_aKlarnaCountries;
         }
         $sViewName = getViewName('oxcountry', $this->getViewDataElement('adminlang'));
-        $isoList   = KlarnaUtils::getKlarnaGlobalActiveShopCountryISOs();
+        $isoList   = KlarnaConsts::getKlarnaCoreCountries();
 
         /** @var \OxidEsales\EshopCommunity\Core\Database\Adapter\Doctrine\Database $db */
         $db  = oxDb::getDb(oxDb::FETCH_MODE_ASSOC);
         $sql = 'SELECT oxisoalpha2, oxtitle 
                 FROM ' . $sViewName . ' 
-                WHERE oxisoalpha2 IN ("' . implode('","', $isoList) . '")';
+                WHERE oxisoalpha2 IN ("' . implode('","', $isoList) . '") AND oxactive = \'1\'';
 
         $aResult = $db->getArray($sql);
         foreach($aResult as $aCountry){

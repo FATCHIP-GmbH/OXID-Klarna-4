@@ -521,8 +521,9 @@ class klarna_express extends oxUBase
         $oSession = $this->getSession();
 
         /** @var KlarnaUser|User $oUser */
-        if ($oUser = $this->getUser() && !empty($oUser->oxuser__oxpassword->value)) {
-            $oUser->checkUserType();
+        $oUser = $this->getUser();
+        if ($oUser && !empty($oUser->oxuser__oxpassword->value)) {
+            $oUser->kl_checkUserType();
         } else {
             $email = $oSession->getVariable('klarna_checkout_user_email');
             /** @var KlarnaUser|User $oUser */
