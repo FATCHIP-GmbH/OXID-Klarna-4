@@ -3,6 +3,7 @@
 * BugFix admin/GeneralSettings credentials, country select options fix
 * BugFix klarna_express::resolveUser - wrong method called on user object
 * support for older php versions improved
+* fixed issue when general terms checkbox was active
 
 ### 4.2.0
 * Link BugFix for EE
