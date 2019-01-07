@@ -320,6 +320,10 @@ class KlarnaOrder extends oxBase
             $oPayment->calculate($oBasket);
             $aCountryISO = $this->getKlarnaCountryListByPayment($oPayment, $this->getKlarnaCountryList());
             $oPrice      = $oPayment->getPrice();
+            if (!$oPrice) {
+                $oPrice = oxNew('oxPrice');
+                $oPrice->setPrice(0);
+            }
 
             $requestParams = method_exists($oConfig, 'mustAddShopIdToRequest')
                              && $oConfig->mustAddShopIdToRequest()
