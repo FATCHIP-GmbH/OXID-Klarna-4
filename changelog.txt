@@ -5,6 +5,7 @@
 * support for older php versions improved
 * fixed issue when general terms checkbox was active
 * BugFix 0 payment price for oxid 4.9 and older
+* onDeactivate method removed. BugFix for EE
 
 ### 4.2.0
 * Link BugFix for EE

@@ -73,16 +73,6 @@ class KlarnaInstaller extends shop_config
     }
 
     /**
-     * @throws oxConnectionException
-     * @throws oxSystemComponentException
-     */
-    public static function onDeactivate()
-    {
-        $instance = self::getInstance();
-        $instance->deactivateKlarnaPayments();
-    }
-
-    /**
      * Add klarna config vars and set defaults
      */
     protected function addConfigVars()
@@ -382,16 +372,5 @@ class KlarnaInstaller extends shop_config
             }
         }
         $oActionKlarnaTeaser->save();
-    }
-
-    /**
-     *
-     */
-    protected function deactivateKlarnaPayments()
-    {
-        $sql = 'UPDATE oxpayments
-                SET oxactive = 0
-                WHERE oxid LIKE "klarna%"';
-        $this->db->execute($sql);
     }
 }
