@@ -186,9 +186,9 @@ abstract class KlarnaClientBase extends oxSuperCfg
 
         $module = oxNew('oxModule');
         $module->loadByDir('klarna');
-        $moduleDesc = $module->getDescription();
+        $moduleTitle = $module->getTitle();
         $moduleVer  = $module->getInfo('version');
-        $moduleInfo = str_replace(' ', '_', $moduleDesc . "_" . $moduleVer);
+        $moduleInfo = str_replace(' ', '_', $moduleTitle . "_" . $moduleVer);
 
         $os = php_uname('s');
         $os .= "_" . php_uname('r');
