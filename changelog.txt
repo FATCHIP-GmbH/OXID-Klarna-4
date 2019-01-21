@@ -7,6 +7,7 @@
 * BugFix 0 payment price for oxid 4.9 and older
 * onDeactivate method removed. BugFix for EE
 * fixed http client signature
+* core/KlarnaPayment.php compatibility for older oxid platforms
 
 ### 4.2.0
 * Link BugFix for EE

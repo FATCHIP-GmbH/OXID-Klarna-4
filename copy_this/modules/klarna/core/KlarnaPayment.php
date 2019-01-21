@@ -150,7 +150,7 @@ class KlarnaPayment extends oxBase
             "purchase_country"  => $sCountryISO,
             "purchase_currency" => $currencyISO,
             "merchant_urls"     => array(
-                "confirmation" => $oConfig->getSslShopUrl() . "?cl=order&oxdownloadableproductsagreement=1&ord_agb=1&fnc=execute&stoken=" . $sToken . $shopUrlParam,
+                "confirmation" => $oConfig->getSslShopUrl() . "?cl=order&oxdownloadableproductsagreement=1&fnc=execute&stoken=" . $sToken . $shopUrlParam,
             ),
         );
 
@@ -600,8 +600,11 @@ class KlarnaPayment extends oxBase
         $sql    = 'SELECT oxid FROM oxpayments WHERE OXACTIVE=1 AND KLEXTERNALPAYMENT=1';
         /** @var ResultSet $oRs */
         $oRs = $db->select($sql);
-        foreach ($oRs->getIterator() as $payment) {
-            $result[] = $payment['oxid'];
+        if ($oRs->recordCount()) {
+            while (!$oRs->EOF) {
+                $result[] = $oRs->fields['oxid'];
+                $oRs->moveNext();
+            }
         }
 
         return $result;
