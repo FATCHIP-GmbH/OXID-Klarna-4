@@ -150,7 +150,7 @@ class KlarnaPayment extends oxBase
             "purchase_country"  => $sCountryISO,
             "purchase_currency" => $currencyISO,
             "merchant_urls"     => array(
-                "confirmation" => $oConfig->getSslShopUrl() . "?cl=order&oxdownloadableproductsagreement=1&fnc=execute&stoken=" . $sToken . $shopUrlParam,
+                "confirmation" => $oConfig->getSslShopUrl() . "?cl=order&oxdownloadableproductsagreement=1&ord_agb=1&fnc=execute&stoken=" . $sToken . $shopUrlParam,
             ),
         );
 
