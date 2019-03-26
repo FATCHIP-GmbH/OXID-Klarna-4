@@ -35,6 +35,7 @@ class KlarnaFormatter
         'oxcountryid'   => 'country',
         'oxsal'         => 'title',
         'oxcompany'     => 'organization_name',
+        'oxaddinfo'     => 'street_address2',
         'oxbirthdate'   => 'date_of_birth',
     );
 
