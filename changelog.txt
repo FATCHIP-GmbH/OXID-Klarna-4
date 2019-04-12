@@ -1,5 +1,6 @@
-### not yet released
+### 4.2.2
 * Added street_address2/oxaddinfo mapping so c/o or company names will be transmitted from Klarna Checkout to OXID eShop
+* Prefill KCO care_of field so oxaddinfo will be transmitted from OXID eShop to Klarna Checkout
 
 ### 4.2.1
 * BugFix on admin KlarnaConfiguration page in KP mode: Changes were not saved due to wrong cl parameter
