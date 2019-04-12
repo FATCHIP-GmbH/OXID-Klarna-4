@@ -130,7 +130,7 @@ class KlarnaFormatter
         $aExtendFieldMapper['oxaddinfo'] = "care_of";
         
         //Remove unwanted fields
-        $validMappedFields = array_diff(self::$aExtendFieldMapper, $ignoreNames);
+        $validMappedFields = array_diff($aExtendFieldMapper, $ignoreNames);
 
         foreach ($validMappedFields as $oxName => $klarnaName) {
             switch ($klarnaName) {
