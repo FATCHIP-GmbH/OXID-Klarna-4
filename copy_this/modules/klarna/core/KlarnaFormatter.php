@@ -126,8 +126,11 @@ class KlarnaFormatter
     protected static function compileUserData(&$aUserData, $oxObject, $sTable, $sCountryISO)
     {
         $ignoreNames = array('date_of_birth', 'street_name', 'street_number');
+        $aExtendFieldMapper = self::$aFieldMapper;
+        $aExtendFieldMapper['oxaddinfo'] = "care_of";
+        
         //Remove unwanted fields
-        $validMappedFields = array_diff(self::$aFieldMapper, $ignoreNames);
+        $validMappedFields = array_diff(self::$aExtendFieldMapper, $ignoreNames);
 
         foreach ($validMappedFields as $oxName => $klarnaName) {
             switch ($klarnaName) {
@@ -151,6 +154,9 @@ class KlarnaFormatter
                         $aUserData[$klarnaName] = $value;
                     }
             }
+        }
+        if (!empty($aUserData["care_of"])) {
+            $aUserData["care_of"] = preg_replace("/^c\/o /", "", $aUserData["care_of"]);
         }
     }
 
