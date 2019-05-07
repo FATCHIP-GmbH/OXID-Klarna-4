@@ -1,10 +1,6 @@
 Changelog
 =========
 
-Not Yet Released
------
-* Klarna Logs BugFix
-
 1.7.0
 -----
 
