@@ -107,7 +107,7 @@ class Klarna_Order extends Klarna_Order_parent
     /**
      * Logging push state message to database
      * @param $action
-     * @param string $requestBody
+     * @param $requestBody
      * @param $url
      * @param $response
      * @param $errors
@@ -117,15 +117,14 @@ class Klarna_Order extends Klarna_Order_parent
      */
     protected function logKlarnaData($action, $requestBody, $url, $response, $errors, $redirectUrl = '')
     {
-        $request  = json_decode($requestBody, true);
-        $order_id = isset($request['order_id']) ? $request['order_id'] : '';
+        $order_id = isset($requestBody['order_id']) ? $requestBody['order_id'] : '';
 
         $oKlarnaLog = oxNew('klarna_logs');
         $aData      = array(
             'kl_logs__klmethod'      => $action,
             'kl_logs__klurl'         => $url,
             'kl_logs__klorderid'     => $order_id,
-            'kl_logs__klrequestraw'  => $requestBody .
+            'kl_logs__klrequestraw'  => json_encode($requestBody) .
                                         " \nERRORS:" . var_export($errors, true) .
                                         " \nHeader Location:" . $redirectUrl,
             'kl_logs__klresponseraw' => $response,
