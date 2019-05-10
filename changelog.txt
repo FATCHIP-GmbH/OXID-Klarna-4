@@ -1,5 +1,6 @@
 Not Yet Released
 -----
+* Added support for KP in CH
 * Klarna Logs BugFix
 
 ### 4.2.2
