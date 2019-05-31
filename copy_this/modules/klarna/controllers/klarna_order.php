@@ -813,29 +813,31 @@ class Klarna_Order extends Klarna_Order_parent
      */
     protected function updateUserObject()
     {
-        if ($this->_aOrderData['billing_address'] !== $this->_aOrderData['shipping_address']) {
-            $this->_oUser->updateDeliveryAddress(KlarnaFormatter::klarnaToOxidAddress($this->_aOrderData, 'shipping_address'));
-        } else {
-            $this->_oUser->clearDeliveryAddress();
-        }
+        if(!empty($this->_oUser)) {
+            if ($this->_aOrderData['billing_address'] !== $this->_aOrderData['shipping_address']) {
+                $this->_oUser->updateDeliveryAddress(KlarnaFormatter::klarnaToOxidAddress($this->_aOrderData, 'shipping_address'));
+            } else {
+                $this->_oUser->clearDeliveryAddress();
+            }
 
-        $this->_oUser->assign(KlarnaFormatter::klarnaToOxidAddress($this->_aOrderData, 'billing_address'));
+            $this->_oUser->assign(KlarnaFormatter::klarnaToOxidAddress($this->_aOrderData, 'billing_address'));
 
-        if (isset($this->_aOrderData['customer']['date_of_birth'])) {
-            $this->_oUser->oxuser__oxbirthdate = new oxField($this->_aOrderData['customer']['date_of_birth']);
-        }
+            if (isset($this->_aOrderData['customer']['date_of_birth'])) {
+                $this->_oUser->oxuser__oxbirthdate = new oxField($this->_aOrderData['customer']['date_of_birth']);
+            }
 
-        if ($this->_oUser->isWritable()) {
-            try {
-                if($this->_oUser->kl_getType() == klarna_oxuser::NOT_EXISTING
-                    && count($this->_oUser->getUserGroups()) == 0){
-                    $this->_oUser->addToGroup('oxidnewcustomer');
-                }
+            if ($this->_oUser->isWritable()) {
+                try {
+                    if($this->_oUser->kl_getType() == klarna_oxuser::NOT_EXISTING
+                        && count($this->_oUser->getUserGroups()) == 0){
+                        $this->_oUser->addToGroup('oxidnewcustomer');
+                    }
 
-                $this->_oUser->save();
-            } catch (\Exception $e){
-                if($e->getCode() === DUPLICATE_KEY_ERROR_CODE && $this->_oUser->kl_getType() == Klarna_oxUser::LOGGED_IN){
-                    $this->_oUser->logout();
+                    $this->_oUser->save();
+                } catch (\Exception $e){
+                    if($e->getCode() === DUPLICATE_KEY_ERROR_CODE && $this->_oUser->kl_getType() == Klarna_oxUser::LOGGED_IN){
+                        $this->_oUser->logout();
+                    }
                 }
             }
         }

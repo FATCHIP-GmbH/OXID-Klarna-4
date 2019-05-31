@@ -337,7 +337,7 @@ class klarna_oxuser extends klarna_oxuser_parent
             if(!$sAddressOxid = $oAddress->klExists()){
                 $sAddressOxid = $oAddress->save();
                 if ($this->isFake()) {
-                    $oAddress->oxaddress__kltemporary = new Field(1, Field::T_RAW);
+                    $oAddress->oxaddress__kltemporary = new oxField(1, oxField::T_RAW);
                 }
             }
             $this->updateSessionDeliveryAddressId($sAddressOxid);
