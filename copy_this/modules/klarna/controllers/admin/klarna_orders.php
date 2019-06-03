@@ -196,6 +196,13 @@ class klarna_orders extends oxAdminDetails
      */
     public function cancelOrder()
     {
+        $oOrder = $this->getEditObject();
+        $result = $this->cancelKlarnaOrder($oOrder);
+        if ($result) {
+            $oOrder->cancelOrder();
+        }
+
+        $this->getSession()->setVariable($oOrder->getId().'orderCancel', $result);
         return $this->getEditObject()->cancelOrder();
     }
 
@@ -253,5 +260,42 @@ class klarna_orders extends oxAdminDetails
         }
 
         return $aCaptures;
+    }
+
+
+    protected function cancelKlarnaOrder($oOrder)
+    {
+        if (!$oOrder->isLoaded()) {
+            return false;
+        }
+
+        if ($oOrder->isKlarnaOrder() && !$oOrder->getFieldData('oxstorno')) {
+            $orderId     = $oOrder->getFieldData('tcklarna_orderid');
+            $sCountryISO = KlarnaUtils::getCountryISO($oOrder->getFieldData('oxbillcountryid'));
+
+            try {
+                $oOrder->cancelKlarnaOrder($orderId, $sCountryISO);
+                $oOrder->oxorder__klsync = new oxField(1);
+                $oOrder->save();
+            } catch (oxException $e) {
+                if (strstr($e->getMessage(), 'is canceled.')) {
+
+                    return true;
+                }
+
+                oxRegistry::get(oxUtilsView::class)->addErrorToDisplay($e);
+                $this->resetCache();
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    protected function resetCache()
+    {
+        $this->resetContentCache();
+        $this->init();
     }
 }
