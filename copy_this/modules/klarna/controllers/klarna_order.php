@@ -56,7 +56,10 @@ class Klarna_Order extends Klarna_Order_parent
     public function init()
     {
         parent::init();
-
+        //Re-set country to session if empty
+        if(empty(oxRegistry::getSession()->getVariable('sCountryISO')) && !empty($this->getUser())) {
+            oxRegistry::getSession()->setVariable('sCountryISO', $this->getUser()->getUserCountryISO2());
+        }
         if (KlarnaUtils::isKlarnaCheckoutEnabled()) {
             $oConfig = oxRegistry::getConfig();
             $shopParam = method_exists($oConfig, 'mustAddShopIdToRequest')
