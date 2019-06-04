@@ -338,6 +338,16 @@ class Klarna_Order extends Klarna_Order_parent
     protected function kcoBeforeExecute()
     {
         try {
+            $oBasket      = oxRegistry::getSession()->getBasket();
+            $oKlarnaOrder = new KlarnaOrder($oBasket, $this->_oUser);
+            $oKlarnaOrder->validateKlarnaB2B();
+            if($oKlarnaOrder->isError()) {
+                $oKlarnaOrder->displayErrors();
+                oxRegistry::getUtils()->redirect(oxRegistry::getConfig()->getShopSecureHomeUrl() . 'cl=order', false, 302);
+
+                return;
+            }
+
             $this->_validateUser($this->_aOrderData);
         } catch (oxException $exception) {
             $this->_aResultErrors[] = $exception->getMessage();

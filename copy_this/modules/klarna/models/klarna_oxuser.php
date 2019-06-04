@@ -37,10 +37,11 @@ class klarna_oxuser extends klarna_oxuser_parent
     protected $_countryISO;
 
     /**
+     * @param bool $isB2BAvailable
      * @return array
      * @throws oxSystemComponentException
      */
-    public function getKlarnaData()
+    public function getKlarnaData($isB2BAvailable = false)
     {
         $shippingAddress = null;
         $result          = array();
@@ -49,6 +50,7 @@ class klarna_oxuser extends klarna_oxuser_parent
             $this->preFillAddress($result);
         }
 
+        $billingAddress = KlarnaFormatter::oxidToKlarnaAddress($this);
 
         if ($sCountryISO = $this->getConfig()->getRequestParameter('selected-country')) {
             if (oxRegistry::getSession()->hasVariable('invadr')) {
@@ -56,6 +58,10 @@ class klarna_oxuser extends klarna_oxuser_parent
             }
             $result['billing_address']['country'] = $sCountryISO;
             oxRegistry::getSession()->setVariable('sCountryISO', $sCountryISO);
+        }
+
+        if($isB2BAvailable && !empty($billingAddress['organization_name'])){
+            $result['customer']['type'] = 'organization';
         }
 
         return $result;

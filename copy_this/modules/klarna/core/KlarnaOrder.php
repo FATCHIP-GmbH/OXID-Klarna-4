@@ -47,6 +47,17 @@ class KlarnaOrder extends oxBase
      */
     protected $_klarnaShippingSets;
 
+    /** @var boolean KCO allowed for b2b clients */
+    protected $b2bAllowed;
+
+    /** @var boolean KCO allowed for b2c clients */
+    protected $b2cAllowed;
+
+    protected $_aUserData;
+
+    /** @var array Order error messages to display to the user */
+    protected $errors;
+
     /**
      * @return array
      */
@@ -75,12 +86,14 @@ class KlarnaOrder extends oxBase
 
         $sSSLShopURL       = oxRegistry::getConfig()->getSslShopUrl();
         $sCountryISO       = $this->_oUser->resolveCountry();
+        $this->resolveB2Options($sCountryISO);
         $currencyName      = $oBasket->getBasketCurrency()->name;
         $sLocale           = $this->_oUser->resolveLocale($sCountryISO);
         $lang              = strtoupper(oxRegistry::getLang()->getLanguageAbbr());
-        $klarnaUserData    = $this->_oUser->getKlarnaData();
+        $this->_aUserData    = $this->_oUser->getKlarnaData($this->b2bAllowed);
         $cancellationTerms = KlarnaUtils::getShopConfVar('sKlarnaCancellationRightsURI_' . $lang);
         $terms             = KlarnaUtils::getShopConfVar('sKlarnaTermsConditionsURI_' . $lang);
+        $orgTerms          = KlarnaUtils::getShopConfVar('sKlarnaOrganizationTermsConditionsURI_'.$lang);
 
         if (empty($cancellationTerms) || empty($terms)) {
             oxRegistry::getSession()->setVariable('wrong_merchant_urls', true);
@@ -118,7 +131,7 @@ class KlarnaOrder extends oxBase
 
         $this->_aOrderData = array_merge(
             $this->_aOrderData,
-            $klarnaUserData
+            $this->_aUserData
         );
 
         //clean up in case of returning to the iframe with an open order
@@ -150,9 +163,74 @@ class KlarnaOrder extends oxBase
                 );
             }
 
+            if($this->isB2B()) {
+                $this->_aOrderData['customer']['type'] = 'organization';
+                $this->_aOrderData['options']['allowed_customer_types'] = array( 'organization', 'person');
+            }
+
             $this->setAttachmentsData();
             $this->setPassThroughField();
+            $this->validateKlarnaB2B();
         }
+    }
+
+    /**
+     * Checks if specific fields in billing and shipping address have the same values
+     */
+    public function validateKlarnaB2B()
+    {
+        if ($this->_aUserData['billing_address']['organization_name'] && !$this->b2bAllowed) {
+            $this->addErrorMessage('KP_NOT_AVAILABLE_FOR_COMPANIES');
+        }
+
+        if (empty($this->_aUserData['billing_address']['organization_name']) && !$this->b2cAllowed) {
+            $this->addErrorMessage('KP_AVAILABLE_FOR_COMPANIES_ONLY');
+        }
+    }
+
+    /** Passes internal errors to oxid in order to display theme to the user */
+    public function displayErrors()
+    {
+        foreach ($this->errors as $message) {
+            oxRegistry::get(oxUtilsView::class)->addErrorToDisplay($message);
+        }
+    }
+
+    /** Adds Error message in current language
+     * @param $translationKey string message key
+     */
+    public function addErrorMessage($translationKey)
+    {
+        $message        = oxRegistry::getLang()->translateString($translationKey);
+        $this->errors[$translationKey] = $message;
+    }
+
+    /**
+     * @param $sCountryISO
+     */
+    protected function resolveB2Options($sCountryISO)
+    {
+        $this->b2bAllowed = false;
+        $this->b2cAllowed = true;
+        $activeB2Option = KlarnaUtils::getShopConfVar('sKlarnaB2Option');
+
+        if(in_array($activeB2Option, array('B2B', 'B2BOTH'))){
+            $this->b2bAllowed = in_array($sCountryISO, KlarnaConsts::getKlarnaKCOB2BCountries());
+        }
+
+        if($activeB2Option === 'B2B'){
+            $this->b2cAllowed = false;
+        }
+    }
+
+    public function isB2BAllowed()
+    {
+        return $this->b2bAllowed;
+    }
+
+    public function isB2B()
+    {
+        return $this->b2bAllowed && !empty($this->_aUserData['billing_address']['organization_name']);
     }
 
     /**
@@ -571,5 +649,13 @@ class KlarnaOrder extends oxBase
         if (!empty($data)) {
             $this->_aOrderData['merchant_data'] = $data;
         }
+    }
+
+    /**
+     * @return bool
+     */
+    public function isError()
+    {
+        return (bool)$this->errors;
     }
 }
