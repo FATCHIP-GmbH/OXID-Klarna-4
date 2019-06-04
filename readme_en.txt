@@ -11,7 +11,7 @@ Klarna
 
 
 -- Version
-4.2.2
+4.3.0
 
 
 -- Link
@@ -29,6 +29,6 @@ integration@klarna.de
 
 -- Installation
 
-See klarna-module-for-oxid-en-4.2.2.pdf
+See klarna-module-for-oxid-en-4.3.0.pdf
 
 
