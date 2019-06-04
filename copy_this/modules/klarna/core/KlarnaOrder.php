@@ -163,7 +163,7 @@ class KlarnaOrder extends oxBase
                 );
             }
 
-            if($this->isB2B()) {
+            if($this->isB2BAllowed()) {
                 $this->_aOrderData['customer']['type'] = 'organization';
                 $this->_aOrderData['options']['allowed_customer_types'] = array( 'organization', 'person');
             }
@@ -226,11 +226,6 @@ class KlarnaOrder extends oxBase
     public function isB2BAllowed()
     {
         return $this->b2bAllowed;
-    }
-
-    public function isB2B()
-    {
-        return $this->b2bAllowed && !empty($this->_aUserData['billing_address']['organization_name']);
     }
 
     /**
