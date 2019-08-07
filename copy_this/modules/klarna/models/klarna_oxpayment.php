@@ -52,6 +52,20 @@ class klarna_oxpayment extends klarna_oxpayment_parent
     const KLARNA_PAYMENT_PAY_NOW = 'klarna_pay_now';
 
     /**
+     * Oxid value of Klarna Pay Now payment
+     *
+     * @var string
+     */
+    const KLARNA_DIRECTDEBIT = 'klarna_directdebit';
+
+    /**
+     * Oxid value of Klarna Pay Now payment
+     *
+     * @var string
+     */
+    const KLARNA_SOFORT = 'klarna_sofort';
+
+    /**
      * Get list of Klarna payments ids
      *
      * @param null||string $filter KP - Klarna Payment Options
@@ -65,7 +79,8 @@ class klarna_oxpayment extends klarna_oxpayment_parent
                 self::KLARNA_PAYMENT_SLICE_IT_ID,
                 self::KLARNA_PAYMENT_PAY_LATER_ID,
                 self::KLARNA_PAYMENT_PAY_NOW,
-
+                self::KLARNA_DIRECTDEBIT,
+                self::KLARNA_SOFORT,
             );
         }
         if ($filter === 'KP') {
@@ -73,6 +88,8 @@ class klarna_oxpayment extends klarna_oxpayment_parent
                 self::KLARNA_PAYMENT_SLICE_IT_ID,
                 self::KLARNA_PAYMENT_PAY_LATER_ID,
                 self::KLARNA_PAYMENT_PAY_NOW,
+                self::KLARNA_DIRECTDEBIT,
+                self::KLARNA_SOFORT,
             );
         }
     }
@@ -88,6 +105,8 @@ class klarna_oxpayment extends klarna_oxpayment_parent
                 self::KLARNA_PAYMENT_SLICE_IT_ID  => 'pay_over_time',
                 self::KLARNA_PAYMENT_PAY_LATER_ID => 'pay_later',
                 self::KLARNA_PAYMENT_PAY_NOW      => 'pay_now',
+                self::KLARNA_DIRECTDEBIT          => 'direct_debit',
+                self::KLARNA_SOFORT               => 'direct_bank_transfer',
             );
 
             return $names[$this->getId()];

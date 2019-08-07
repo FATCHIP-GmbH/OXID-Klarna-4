@@ -176,6 +176,10 @@ class KlarnaInstaller extends shop_config
                                  array($de_prefix => 'Klarna Ratenkauf', $en_prefix => 'Klarna Slice It'),
                              klarna_oxpayment::KLARNA_PAYMENT_PAY_NOW =>
                                  array($de_prefix => 'Sofort bezahlen', $en_prefix => 'Klarna Pay Now'),
+                             klarna_oxpayment::KLARNA_DIRECTDEBIT =>
+                                 array($de_prefix => 'Klarna Pay Now Direct Debit', $en_prefix => 'Klarna Pay Now Direct Debit'),
+                             klarna_oxpayment::KLARNA_SOFORT =>
+                                 array($de_prefix => 'Klarna Sofortüberweisung', $en_prefix => 'Klarna Pay Now Sofort '),
         );
         $sort        = -350;
         $aLangs      = oxRegistry::getLang()->getLanguageArray();
