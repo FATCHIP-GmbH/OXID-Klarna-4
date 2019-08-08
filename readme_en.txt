@@ -3,7 +3,7 @@ Klarna Checkout and Klarna Payments Module for the OXID eShop
 
 
 -- Author
-top concepts GmbH
+cgrd GmbH
 
 
 -- Prefix
@@ -11,7 +11,7 @@ Klarna
 
 
 -- Version
-4.3.0
+4.4.0
 
 
 -- Link
@@ -29,6 +29,6 @@ integration@klarna.de
 
 -- Installation
 
-See klarna-module-for-oxid-en-4.3.0.pdf
+See klarna-module-for-oxid-en-4.4.0.pdf
 
 
