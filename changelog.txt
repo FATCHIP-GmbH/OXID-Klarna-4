@@ -1,5 +1,5 @@
-Not Yet Released
------
+### 4.4.0
+* Added support for KP split and combined mode
 * Added support for KP in CH
 * Klarna Logs BugFix
 
