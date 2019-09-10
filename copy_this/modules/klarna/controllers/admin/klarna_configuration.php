@@ -179,5 +179,71 @@ class Klarna_Configuration extends klarna_base_config
             $oPayment = oxNew('oxpayment');
             $oPayment->setActiveKPMethods();
         }
+
+        $setting = oxRegistry::getConfig()->getRequestParameter('confbools');
+        if (KlarnaUtils::isKlarnaCheckoutEnabled()) {
+            oxRegistry::getSession()->setVariable("confbools",$setting);
+        }
+    }
+
+    /**
+     * @throws oxSystemComponentException
+     */
+    public function checkEuropeanCountries()
+    {
+        $setting = oxRegistry::getSession()->getVariable("confbools");
+        $message = null;
+        if (KlarnaUtils::isKlarnaCheckoutEnabled() && $setting['blKlarnaAllowSeparateDeliveryAddress'] == 1) {
+
+            $result = self::getEuropeanCountries();
+            foreach ($result as $alpha2 => $title) {
+                $check = KlarnaUtils::isCountryActiveInKlarnaCheckout($alpha2);
+                if ($check == false) {
+                    $missingCountries[] = $title;
+                }
+            }
+
+            if (!empty($missingCountries)) {
+                $message = sprintf(
+                    oxRegistry::getLang()->translateString('KL_EU_WARNING'),
+                    implode(", ", $missingCountries)
+                );
+            }
+        }
+        oxRegistry::getUtils()->showMessageAndExit(json_encode(array('warningMessage' => $message)));
+    }
+
+    public static function getEuropeanCountries()
+    {
+        return [
+            'AT' => "Österreich",
+            'BE' => "Belgien",
+            'BG' => "Bulgarien",
+            'CY' => "Zypern",
+            'CZ' => "Tschechische Republik",
+            'DE' => "Deutschland",
+            'DK' => "Dänemark",
+            'EE' => "Estland",
+            'ES' => "Spanien",
+            'FI' => "Finnland",
+            'FR' => "Frankreich",
+            'GR' => "Griechenland",
+            'HR' => "Kroatien",
+            'HU' => "Ungarn",
+            'IE' => "Irland",
+            'IT' => "Italien",
+            'LT' => "Litauen",
+            'LU' => "Luxemburg",
+            'LV' => "Lettland",
+            'MT' => "Malta",
+            'NL' => "Niederlande",
+            'PL' => "Polen",
+            'PT' => "Portugal",
+            'RO' => "Rumänien",
+            'SE' => "Schweden",
+            'SI' => "Slowenien",
+            'SK' => "Slowakei",
+            'UK' => "Großbritannien",
+        ];
     }
 }

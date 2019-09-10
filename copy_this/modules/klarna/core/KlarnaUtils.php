@@ -134,10 +134,11 @@ class KlarnaUtils
 
     /**
      * @param $sCountryISO
+     * @param bool $filterKcoList
      * @return bool
      * @throws oxSystemComponentException
      */
-    public static function isCountryActiveInKlarnaCheckout($sCountryISO)
+    public static function isCountryActiveInKlarnaCheckout($sCountryISO, $filterKcoList = true)
     {
         if ($sCountryISO === null) {
             return true;
@@ -145,7 +146,7 @@ class KlarnaUtils
 
         /** @var oxCountryList $activeKlarnaCountries */
         $activeKlarnaCountries = oxNew('oxcountrylist');
-        $activeKlarnaCountries->loadActiveKlarnaCheckoutCountries();
+        $activeKlarnaCountries->loadActiveKlarnaCheckoutCountries($filterKcoList);
         if (!count($activeKlarnaCountries)) {
             return false;
         }

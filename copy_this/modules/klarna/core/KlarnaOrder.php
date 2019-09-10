@@ -146,8 +146,28 @@ class KlarnaOrder extends oxBase
         // skip all other data if there are no items in the basket
         if (!empty($this->_aOrderData['order_lines'])) {
 
-            $this->_aOrderData['shipping_countries'] = array_values($this->getKlarnaCountryList());
+            $allowSeperateDel = (bool)KlarnaUtils::getShopConfVar('blKlarnaAllowSeparateDeliveryAddress');
+            $this->_aOrderData['billing_countries'] = array_values($this->getKlarnaCountryList());
+            if($allowSeperateDel === false) {
+                $list = $this->kl_getAllSets($oBasket);
+                $aCountries = $this->getKlarnaCountryList();
+                $oDelList = oxRegistry::get("oxDeliveryList");
+                $shippingCountries = [];
 
+                foreach ($list as $l)
+                {
+                    $sShipSetId = $l['id'];
+                    foreach ($aCountries as $sCountryId => $alpha2) {
+                        if ($oDelList->hasDeliveries($oBasket, $oUser, $sCountryId, $sShipSetId)) {
+                            $shippingCountries[$alpha2] = $alpha2;
+                        }
+                    }
+
+                }
+
+                $this->_aOrderData['shipping_countries'] = array_values($shippingCountries);
+            }
+            
             $this->_aOrderData['shipping_options'] = $this->kl_getAllSets($oBasket);
 
             $externalMethods = $this->getExternalPaymentMethods($oBasket, $this->_oUser);

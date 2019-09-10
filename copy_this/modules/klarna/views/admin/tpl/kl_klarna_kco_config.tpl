@@ -377,11 +377,11 @@
                         </table>
                     </td>
                 </tr>
-                [{*<tr>*}]
-                [{*<td colspan="3">*}]
-                [{*<div class="messagebox warn">[{"KL_EMPTY_FIELDS_WARNING"|oxmultilangassign}]</div>*}]
-                [{*</td>*}]
-                [{*</tr>*}]
+                <tr>
+                    <td colspan="3">
+                        <div class="messagebox warn"></div>
+                    </td>
+                </tr>
                 <tr>
                     <td colspan="3">
                         <div class="messagebox info">[{"KL_CHANGES_SAVED"|oxmultilangassign}]</div>

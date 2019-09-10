@@ -332,12 +332,31 @@ var MultiLangWidget = {
         event.preventDefault();
         var $msgBox = $('.messagebox.info');
         this.serializeForm();
-        $.post(this.$form.attr('action'), this.$form.serialized);
+        var actionUrl = this.$form.attr('action');
+        $.post(actionUrl, this.$form.serialized).done(function(data){
+            $.ajax({
+                url: actionUrl+'cl=klarna_configuration&fnc=checkEuropeanCountries',
+                type: 'POST',
+                data: data,
+                dataType: 'json'
+            }).done(function(oData){
+                var json = oData;
+                var $warnBox = $('.messagebox.warn');
+                if(json.warningMessage != null) {
+                    if($warnBox.is(':empty')){
+                        $warnBox.append('<p>'+json.warningMessage+'</p>') ;
+                    }
+                    $warnBox.slideDown();
+                } else {
+                    $warnBox.slideUp();
+                }
+            });
+        });
         $msgBox.slideDown(function () {
             setTimeout(function () {
                 $msgBox.slideUp();
             }, 2000);
-        })
+        });
     },
 
     beforeSelection: function(selected){

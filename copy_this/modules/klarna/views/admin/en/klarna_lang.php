@@ -298,4 +298,5 @@ For a detailed description of the different settings please see the tool-tip fun
     'TCKLARNA_NEED_SUPPORT'        => 'Need support with the integration?',
     'TCKLARNA_REACH_SUPPORT'       => 'Reach out to Klarna\'s Merchant support',
 
+    'KL_EU_WARNING' => '<p>To comply with the EU Geoblocking Regulation it is highly recommended to enable all European countries and assign them to the Klarna Checkout payment method.</p><p>Missing countries: %s</p>',
 );
