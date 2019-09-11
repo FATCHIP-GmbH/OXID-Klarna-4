@@ -97,7 +97,11 @@
                     </span>
                     </td>
                 </tr>
-
+                <tr>
+                    <td colspan="3">
+                        <div class="messagebox warn"></div>
+                    </td>
+                </tr>
                 <tr class="bg-grey">
                     <td>[{oxmultilang ident="KL_PHONE_NUMBER_MANDATORY"}]</td>
                     <td>
