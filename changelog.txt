@@ -1,3 +1,8 @@
+### 4.4.1
+* KP Pay Now Split changes
+* EU Geoblocking regulation implementation
+* KCO: Bugfix for Country list drop-down
+
 ### 4.4.0
 * Added support for KP split and combined mode
 * Added support for KP in CH
