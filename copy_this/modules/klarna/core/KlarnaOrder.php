@@ -148,7 +148,8 @@ class KlarnaOrder extends oxBase
 
             $allowSeperateDel = (bool)KlarnaUtils::getShopConfVar('blKlarnaAllowSeparateDeliveryAddress');
             $this->_aOrderData['billing_countries'] = array_values($this->getKlarnaCountryList());
-            if($allowSeperateDel === false) {
+
+            if($allowSeperateDel === true) {
                 $list = $this->kl_getAllSets($oBasket);
                 $aCountries = $this->getKlarnaCountryList();
                 $oDelList = oxRegistry::get("oxDeliveryList");
