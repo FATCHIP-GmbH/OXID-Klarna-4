@@ -3,6 +3,7 @@
 * EU Geoblocking regulation implementation
 * KCO: Bugfix for Country list drop-down
 * Remove empty check on klarnaToOxid formatter
+* correct image path for actions
 
 ### 4.4.0
 * Added support for KP split and combined mode
