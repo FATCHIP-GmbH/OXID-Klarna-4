@@ -370,7 +370,7 @@ class KlarnaInstaller extends shop_config
             $oActionKlarnaTeaser->{'oxactions__oxlink' . $sTag}  = new oxField($sLink, oxField::T_RAW);
             $oActionKlarnaTeaser->{'oxactions__oxpic' . $sTag}   = new oxField($langFileName, oxField::T_RAW);
 
-            $filePath = self::$instance->modulePath . '/out/src/img/' . $langFileName;
+            $filePath = self::$instance->modulePath . '/out/img/' . $langFileName;
             if (file_exists($filePath)) {
                 copy($filePath, $actionsMediaPath . $langFileName);
             }
