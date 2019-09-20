@@ -199,10 +199,6 @@ class klarna_express extends oxUBase
             return true;
         }
 
-        if (!KlarnaUtils::isNonKlarnaCountryActive()) {
-            return false;
-        }
-
         if ($this->isKLUserLoggedIn()) {
             return false;
         }
