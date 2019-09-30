@@ -34,18 +34,15 @@ class Klarna_OxCmp_basket extends Klarna_OxCmp_basket_parent
      */
     public function actionKlarnaExpressCheckoutFromDetailsPage()
     {
-        oxRegistry::getSession()->deleteVariable('_newitem');
-
+        // trows exception if adding item to basket fails
         $this->tobasket();
 
-        if (oxRegistry::getSession()->getVariable('_newitem') !== null) {
-            $oConfig = oxRegistry::getConfig();
-            oxRegistry::getUtils()->redirect(
-                $oConfig->getShopSecureHomeUrl() . 'cl=' . $this->_sRedirectController . '',
-                false,
-                302
-            );
-        }
+        $oConfig = oxRegistry::getConfig();
+        oxRegistry::getUtils()->redirect(
+            $oConfig->getShopSecureHomeUrl() . 'cl=' . $this->_sRedirectController . '',
+            false,
+            302
+        );
     }
 
     /**

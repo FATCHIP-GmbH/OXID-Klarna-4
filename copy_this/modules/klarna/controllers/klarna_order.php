@@ -303,7 +303,7 @@ class Klarna_Order extends Klarna_Order_parent
             $valid = $this->validatePayment($created, $oKlarnaPayment, $termsValid);
 
             if (!$valid || !$created) {
-                oxRegistry::getUtils()->redirect(Registry::getConfig()->getShopSecureHomeUrl() . 'cl=order', false, 302);
+                oxRegistry::getUtils()->redirect(oxRegistry::getConfig()->getShopSecureHomeUrl() . 'cl=order', false, 302);
             }
 
             oxRegistry::getSession()->setVariable('klarna_last_KP_order_id', $created['order_id']);

@@ -71,9 +71,12 @@ class Klarna_General extends klarna_base_config
     {
         /*** get Country Specific Credentials Config Keys for all Klarna Countries ***/
         $db  = oxDb::getDb(oxDb::FETCH_MODE_ASSOC);
+        $config = oxRegistry::getConfig();
         $sql = "SELECT oxvarname
                 FROM oxconfig 
-                WHERE oxvarname LIKE 'aKlarnaCreds_%'";
+                WHERE oxvarname LIKE 'aKlarnaCreds_%'
+                AND oxshopid = '{$config->getShopId()}'";
+
         $aCountrySpecificCredsConfigKeys = $db->getCol($sql);
 
         if (is_array($nestedArray)) {
