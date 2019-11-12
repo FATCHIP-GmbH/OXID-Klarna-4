@@ -211,7 +211,7 @@ class Klarna_Configuration extends klarna_base_config
 
     public static function getEuropeanCountries()
     {
-        return [
+        return array(
             'AT' => "Österreich",
             'BE' => "Belgien",
             'BG' => "Bulgarien",
@@ -240,6 +240,6 @@ class Klarna_Configuration extends klarna_base_config
             'SI' => "Slowenien",
             'SK' => "Slowakei",
             'UK' => "Großbritannien",
-        ];
+        );
     }
 }
