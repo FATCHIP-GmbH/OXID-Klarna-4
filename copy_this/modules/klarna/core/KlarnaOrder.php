@@ -213,7 +213,7 @@ class KlarnaOrder extends oxBase
     public function displayErrors()
     {
         foreach ($this->errors as $message) {
-            oxRegistry::get(oxUtilsView::class)->addErrorToDisplay($message);
+            oxRegistry::get("oxUtilsView")->addErrorToDisplay($message);
         }
     }
 

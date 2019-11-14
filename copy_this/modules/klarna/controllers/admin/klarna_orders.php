@@ -283,7 +283,7 @@ class klarna_orders extends oxAdminDetails
                     return true;
                 }
 
-                oxRegistry::get(oxUtilsView::class)->addErrorToDisplay($e);
+                oxRegistry::get("oxUtilsView")->addErrorToDisplay($e);
                 $this->resetCache();
 
                 return false;
