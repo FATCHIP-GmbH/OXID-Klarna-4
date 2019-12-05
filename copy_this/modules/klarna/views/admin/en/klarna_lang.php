@@ -56,7 +56,7 @@ $aLang = array(
     your site simply with their email and zip, and pay with the major payment methods. 
     All available in one integration.',
 
-    'KL_KLARNA_PAYMENTS_DESC' => 'Klarna offers three payment solutions. Pay now, Pay later and Slice it. This allows your consumers to try before they buy, finance purchases in your store, or make use of other payment options made available by Klarna.',
+    'KL_KLARNA_PAYMENTS_DESC' => 'Klarna offers three payment solutions. Pay now, Pay later and Financing. This allows your consumers to try before they buy, finance purchases in your store, or make use of other payment options made available by Klarna.',
 
     'KL_EASY_AND_SECURE_SHOPPING' => 'Easy and secure online shopping',
     'KL_WELCOME_TO_CONFIGURATION' => 'Welcome to the configuration settings page of the Klarna Checkout extension for OXID! Here you can find contact details to Klarna and the download link for the PDF documentation. Please choose from the left menu the Klarna sub-menu options to complete the setup for this extension.',
@@ -123,7 +123,7 @@ $aLang = array(
     'KL_CHOOSE_KP_OPTIONS' => 'Choose Klarna Payments options offered to customers:',
     'KL_PAY_LATER'         => 'Pay later',
     'KL_PAY_LATER_TEXT'    => 'The option to pay later makes buying quicker and easier for customers: no need to fill out lengthy personal details or card number online.',
-    'KL_SLICE_IT'          => 'Slice it',
+    'KL_SLICE_IT'          => 'Financing',
     'KL_SLICE_IT_TEXT'     => 'Your customers can spread the cost of their purchases at a low interest rate, giving them flexibility and increased purchasing power. Our unique credit application requires minimal information and takes just seconds to complete.',
     'KL_PAY_NOW'           => 'Pay Now',
     'KL_PAY_NOW_TEXT'      => 'Customers who want to pay in full at checkout can do it quickly and securely with Klarnas Pay now-option - using credit/debit card or Direct bank transfer: Klarna Direkt, Sofort, SEPA Direct Debit.',
@@ -286,7 +286,7 @@ For a detailed description of the different settings please see the tool-tip fun
     'TCKLARNA_EASY'            => 'It is easy to integrate Klarna',
     'TCKLARNA_PAY_LATER.'      => 'Pay later.',
     'TCKLARNA_PAY_LATER_START' => 'Provides consumer an invoice, for those who want to buy now, but pay later.',
-    'TCKLARNA_SLICE_IT.'       => 'Slice it.',
+    'TCKLARNA_SLICE_IT.'       => 'Financing.',
     'TCKLARNA_SLICE_IT_START'  => 'Empower your customers to pay over time.',
     'TCKLARNA_PAY_NOW.'        => 'Pay now.',
     'TCKLARNA_PAY_NOW_START'   => 'For consumers, who want to pay everything at once Sofort and Direct Debit are perfect solutions.',
