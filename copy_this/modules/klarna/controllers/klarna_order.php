@@ -172,10 +172,6 @@ class Klarna_Order extends Klarna_Order_parent
             return false;
         }
 
-        if ($this->isPayPalAmazon()) {
-            return false;
-        }
-
         return true;
     }
 
@@ -277,26 +273,6 @@ class Klarna_Order extends Klarna_Order_parent
         $result = parent::execute();
 
         return $result;
-    }
-
-    /**
-     * @param $created
-     * @param KlarnaPayment $oKlarnaPayment
-     * @param $termsValid
-     * @throws \oxSystemComponentException
-     * @return bool
-     */
-    protected function validatePayment(&$created, KlarnaPayment $oKlarnaPayment, $termsValid)
-    {
-        $oClient = $this->getKlarnaPaymentsClient();
-        $valid   = !$oKlarnaPayment->isError() && $termsValid;
-        if ($valid) {
-            $created = $oClient->initOrder($oKlarnaPayment)->createNewOrder();
-        } else {
-            $oKlarnaPayment->displayErrors();
-        }
-
-        return $valid;
     }
 
     /**
