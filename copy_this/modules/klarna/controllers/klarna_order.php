@@ -256,6 +256,18 @@ class Klarna_Order extends Klarna_Order_parent
             }
 
         }
+        if ($sAuthToken = oxRegistry::getConfig()->getRequestParameter('sAuthToken')) {
+            oxRegistry::getSession()->setVariable('sAuthToken', $sAuthToken);
+            $dt = new DateTime();
+            oxRegistry::getSession()->setVariable('sTokenTimeStamp', $dt->getTimestamp());
+        }
+
+        if (in_array($paymentId,  klarna_oxpayment::getKlarnaPaymentsIds('KP'))) {
+            // ignore agreements
+            $oConfig = oxRegistry::getConfig();
+            $oConfig->setConfigParam('blConfirmAGB', false);
+            $oConfig->setConfigParam('blEnableIntangibleProdAgreement', false);
+        }
 
         // if user is not logged in set the user
         if(!$this->getUser() && isset($this->_oUser)){
@@ -265,50 +277,6 @@ class Klarna_Order extends Klarna_Order_parent
         $result = parent::execute();
 
         return $result;
-    }
-
-    /**
-     * Runs before oxid execute in KP mode
-     * Saves authorization token
-     * Runs final validation
-     * Creates order on Klarna side
-     *
-     * @throws oxSystemComponentException
-     */
-    public function kpBeforeExecute()
-    {
-
-        // downloadable product validation for sofort
-        if (!$termsValid = $this->_validateTermsAndConditions()) {
-            oxRegistry::get('oxUtilsView')->addErrorToDisplay('KL_PLEASE_AGREE_TO_TERMS');
-            oxRegistry::getUtils()->redirect(oxRegistry::getConfig()->getShopSecureHomeUrl() . 'cl=order', false, 302);
-        }
-
-        if ($sAuthToken = oxRegistry::getConfig()->getRequestParameter('sAuthToken')) {
-            oxRegistry::getSession()->setVariable('sAuthToken', $sAuthToken);
-            $dt = new DateTime();
-            oxRegistry::getSession()->setVariable('sTokenTimeStamp', $dt->getTimestamp());
-        }
-
-
-        if ($sAuthToken || oxRegistry::getSession()->hasVariable('sAuthToken')) {
-
-            $oBasket = oxRegistry::getSession()->getBasket();
-            /** @var  $oKlarnaPayment KlarnaPayment */
-            $oKlarnaPayment = oxNew('KlarnaPayment', $oBasket, $this->getUser());
-
-            $created = false;
-            $oKlarnaPayment->validateOrder();
-
-            $valid = $this->validatePayment($created, $oKlarnaPayment, $termsValid);
-
-            if (!$valid || !$created) {
-                oxRegistry::getUtils()->redirect(oxRegistry::getConfig()->getShopSecureHomeUrl() . 'cl=order', false, 302);
-            }
-
-            oxRegistry::getSession()->setVariable('klarna_last_KP_order_id', $created['order_id']);
-            oxRegistry::getUtils()->redirect($created['redirect_url'], false, 302);
-        }
     }
 
     /**

@@ -208,14 +208,12 @@ class KlarnaPaymentsClient extends KlarnaClientBase
     protected function handleNewOrderResponse(Requests_Response $oResponse, $class, $method)
     {
         $successCodes = array(200, 201, 204);
-        $errorCodes   = array(400, 500, 503);
+        $errorCodes   = array(400, 405, 409);
         $message      = "%s";
         try {
             if (in_array($oResponse->status_code, $successCodes)) {
                 KlarnaPayment::cleanUpSession();
                 $result = json_decode($oResponse->body, true);
-                oxRegistry::getSession()->setVariable('kp_order_id', $result['order_id']);
-
                 return $result;
             }
             if ($oResponse->status_code == 403) {

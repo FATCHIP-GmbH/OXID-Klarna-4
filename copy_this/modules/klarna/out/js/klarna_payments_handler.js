@@ -5,11 +5,6 @@ window.klarnaAsyncCallback = function () {
     var $otherRadio = $('input[type=radio]:not(.kp-radio)');
     var recentResponse;
 
-
-    if ($form.attr('id') === 'orderConfirmAgbBottom') {
-        $form.find('input[name=fnc]').val('kpBeforeExecute');
-    }
-
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, '\\$&');
