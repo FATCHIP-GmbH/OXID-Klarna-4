@@ -168,11 +168,7 @@ class Klarna_Order extends Klarna_Order_parent
             return false;
         }
 
-        if ($this->isExternalCheckout) {
-            return false;
-        }
-
-        if ($this->isPayPalAmazon()) {
+        if ($oBasket->getPaymentId() === 'bestitamazon') {
             return false;
         }
 
@@ -256,6 +252,18 @@ class Klarna_Order extends Klarna_Order_parent
             }
 
         }
+        if ($sAuthToken = oxRegistry::getConfig()->getRequestParameter('sAuthToken')) {
+            oxRegistry::getSession()->setVariable('sAuthToken', $sAuthToken);
+            $dt = new DateTime();
+            oxRegistry::getSession()->setVariable('sTokenTimeStamp', $dt->getTimestamp());
+        }
+
+        if (in_array($paymentId,  klarna_oxpayment::getKlarnaPaymentsIds('KP'))) {
+            // ignore agreements
+            $oConfig = oxRegistry::getConfig();
+            $oConfig->setConfigParam('blConfirmAGB', false);
+            $oConfig->setConfigParam('blEnableIntangibleProdAgreement', false);
+        }
 
         // if user is not logged in set the user
         if(!$this->getUser() && isset($this->_oUser)){
@@ -265,70 +273,6 @@ class Klarna_Order extends Klarna_Order_parent
         $result = parent::execute();
 
         return $result;
-    }
-
-    /**
-     * Runs before oxid execute in KP mode
-     * Saves authorization token
-     * Runs final validation
-     * Creates order on Klarna side
-     *
-     * @throws oxSystemComponentException
-     */
-    public function kpBeforeExecute()
-    {
-
-        // downloadable product validation for sofort
-        if (!$termsValid = $this->_validateTermsAndConditions()) {
-            oxRegistry::get('oxUtilsView')->addErrorToDisplay('KL_PLEASE_AGREE_TO_TERMS');
-            oxRegistry::getUtils()->redirect(oxRegistry::getConfig()->getShopSecureHomeUrl() . 'cl=order', false, 302);
-        }
-
-        if ($sAuthToken = oxRegistry::getConfig()->getRequestParameter('sAuthToken')) {
-            oxRegistry::getSession()->setVariable('sAuthToken', $sAuthToken);
-            $dt = new DateTime();
-            oxRegistry::getSession()->setVariable('sTokenTimeStamp', $dt->getTimestamp());
-        }
-
-
-        if ($sAuthToken || oxRegistry::getSession()->hasVariable('sAuthToken')) {
-
-            $oBasket = oxRegistry::getSession()->getBasket();
-            /** @var  $oKlarnaPayment KlarnaPayment */
-            $oKlarnaPayment = oxNew('KlarnaPayment', $oBasket, $this->getUser());
-
-            $created = false;
-            $oKlarnaPayment->validateOrder();
-
-            $valid = $this->validatePayment($created, $oKlarnaPayment, $termsValid);
-
-            if (!$valid || !$created) {
-                oxRegistry::getUtils()->redirect(oxRegistry::getConfig()->getShopSecureHomeUrl() . 'cl=order', false, 302);
-            }
-
-            oxRegistry::getSession()->setVariable('klarna_last_KP_order_id', $created['order_id']);
-            oxRegistry::getUtils()->redirect($created['redirect_url'], false, 302);
-        }
-    }
-
-    /**
-     * @param $created
-     * @param KlarnaPayment $oKlarnaPayment
-     * @param $termsValid
-     * @throws \oxSystemComponentException
-     * @return bool
-     */
-    protected function validatePayment(&$created, KlarnaPayment $oKlarnaPayment, $termsValid)
-    {
-        $oClient = $this->getKlarnaPaymentsClient();
-        $valid   = !$oKlarnaPayment->isError() && $termsValid;
-        if ($valid) {
-            $created = $oClient->initOrder($oKlarnaPayment)->createNewOrder();
-        } else {
-            $oKlarnaPayment->displayErrors();
-        }
-
-        return $valid;
     }
 
     /**
@@ -801,7 +745,6 @@ class Klarna_Order extends Klarna_Order_parent
     protected function _initUser()
     {
         if ($this->_oUser = $this->getUser()) {
-            $this->_oUser->kl_setType(Klarna_oxUser::NOT_REGISTERED);
             if ($this->getViewConfig()->isUserLoggedIn()) {
                 $this->_oUser->kl_setType(Klarna_oxUser::LOGGED_IN);
             }
@@ -875,46 +818,42 @@ class Klarna_Order extends Klarna_Order_parent
     public function klarnaExternalPayment()
     {
         $oSession = oxRegistry::getSession();
+
         $orderId   = oxRegistry::getSession()->getVariable('klarna_checkout_order_id');
         $paymentId = oxRegistry::getConfig()->getRequestParameter('payment_id');
         if (!$orderId || !$paymentId || !$this->isActivePayment($paymentId)) {
             oxRegistry::get("oxUtilsView")->addErrorToDisplay('KLARNA_WENT_WRONG_TRY_AGAIN', false, true);
             oxRegistry::getUtils()->redirect($this->selfUrl, true, 302);
+
+            return;
         }
 
-        $oBasket  = $oSession->getBasket();
-
         $oSession->setVariable("paymentid", $paymentId);
+        $oBasket = $oSession->getBasket();
+        // make sure we have the right shipping option
+        $oBasket->setShipping($this->_aOrderData['selected_shipping_option']['id']);
         $oBasket->setPayment($paymentId);
+        $oBasket->onUpdate();
 
         if ($this->isExternalCheckout) {
             $this->klarnaExternalCheckout($paymentId);
+            return;
         }
 
-        $oBasket->setPayment($paymentId);
-
-        if ($this->_oUser->isCreatable()) {
-            $this->_createUser();
-        }
-
-        // make sure we have the right shipping option
-        $oBasket->setShipping($this->_aOrderData['selected_shipping_option']['id']);
-        $oBasket->onUpdate();
 
         if ($paymentId === 'bestitamazon') {
-            oxRegistry::getUtils()->redirect(oxRegistry::getConfig()->getShopSecureHomeUrl() . "cl=klarna_epm_dispatcher&fnc=amazonLogin", false);
+            if ($this->_oUser->isCreatable()) {
+                // create user
+                $this->_createUser();
+            }
+
+            return oxRegistry::getUtils()->redirect(oxRegistry::getConfig()->getShopSecureHomeUrl() . "cl=klarna_epm_dispatcher&fnc=amazonLogin", false);
         } else {
             oxRegistry::getConfig()->setConfigParam('blAmazonLoginActive', false);
         }
 
-
         if ($paymentId === 'oxidpaypal') {
-            if ($this->_oUser->kl_getType() === Klarna_oxUser::LOGGED_IN) {
-
-                return oxRegistry::get('oePayPalStandardDispatcher')->setExpressCheckout();
-            }
-
-            return oxRegistry::get('oePayPalExpressCheckoutDispatcher')->setExpressCheckout();
+            return oxRegistry::get('oePayPalStandardDispatcher')->setExpressCheckout();
         }
 
         // if user is not logged in set the user to render order
@@ -931,7 +870,12 @@ class Klarna_Order extends Klarna_Order_parent
         if ($paymentId === 'bestitamazon') {
             oxRegistry::getUtils()->redirect(oxRegistry::getConfig()->getShopSecureHomeUrl() . "cl=klarna_epm_dispatcher&fnc=amazonLogin", false);
         } else if ($paymentId === 'oxidpaypal') {
-            oxRegistry::get('oePayPalExpressCheckoutDispatcher')->setExpressCheckout();
+            $useStandardDispatcher = $this->getUser()->klHasValidInfo();
+            if ($useStandardDispatcher) {
+                return oxRegistry::get('oePayPalStandardDispatcher')->setExpressCheckout();
+            }
+            return oxRegistry::get('oePayPalExpressCheckoutDispatcher')->setExpressCheckout();
+
         } else {
             KlarnaUtils::fullyResetKlarnaSession();
             oxRegistry::get("oxUtilsView")->addErrorToDisplay('KLARNA_WENT_WRONG_TRY_AGAIN', false, true);
@@ -1111,14 +1055,6 @@ class Klarna_Order extends Klarna_Order_parent
         $paymentId = oxRegistry::getSession()->getBasket()->getPaymentId();
 
         return in_array($paymentId, klarna_oxpayment::getKlarnaPaymentsIds('KP'));
-    }
-
-    /**
-     * @return bool
-     */
-    protected function isPayPalAmazon()
-    {
-        return in_array(oxRegistry::getSession()->getBasket()->getPaymentId(), array('oxidpaypal', 'bestitamazon'));
     }
 
     /**

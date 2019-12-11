@@ -270,7 +270,7 @@ class klarna_orders extends oxAdminDetails
         }
 
         if ($oOrder->isKlarnaOrder() && !$oOrder->getFieldData('oxstorno')) {
-            $orderId     = $oOrder->getFieldData('tcklarna_orderid');
+            $orderId     = $oOrder->getFieldData('klorderid');
             $sCountryISO = KlarnaUtils::getCountryISO($oOrder->getFieldData('oxbillcountryid'));
 
             try {

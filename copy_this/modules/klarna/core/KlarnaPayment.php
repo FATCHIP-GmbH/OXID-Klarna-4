@@ -144,13 +144,11 @@ class KlarnaPayment extends oxBase
             $this->currencyToCountryMatch = false;
         }
 
-        $oSession          = oxRegistry::getSession();
-        $sToken            = $oSession->getSessionChallengeToken();
         $this->_aOrderData = array(
             "purchase_country"  => $sCountryISO,
             "purchase_currency" => $currencyISO,
             "merchant_urls"     => array(
-                "confirmation" => $oConfig->getSslShopUrl() . "?cl=order&oxdownloadableproductsagreement=1&ord_agb=1&fnc=execute&stoken=" . $sToken . $shopUrlParam,
+                "confirmation" => oxRegistry::getConfig()->getSslShopUrl() . '?cl=thankyou' . $shopUrlParam,
             ),
         );
 

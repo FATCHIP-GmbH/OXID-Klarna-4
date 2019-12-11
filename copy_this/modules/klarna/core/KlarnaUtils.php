@@ -312,7 +312,6 @@ class KlarnaUtils
     {
         oxRegistry::getSession()->deleteVariable('paymentid');
         oxRegistry::getSession()->deleteVariable('klarna_checkout_order_id');
-        oxRegistry::getSession()->deleteVariable('kp_order_id');
         oxRegistry::getSession()->deleteVariable('amazonOrderReferenceId');
         oxRegistry::getSession()->deleteVariable('klarna_checkout_user_email');
         oxRegistry::getSession()->deleteVariable('externalCheckout');

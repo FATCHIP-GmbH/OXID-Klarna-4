@@ -153,7 +153,7 @@ class KlarnaOrder extends oxBase
                 $list = $this->kl_getAllSets($oBasket);
                 $aCountries = $this->getKlarnaCountryList();
                 $oDelList = oxRegistry::get("oxDeliveryList");
-                $shippingCountries = [];
+                $shippingCountries = array();
 
                 foreach ($list as $l)
                 {

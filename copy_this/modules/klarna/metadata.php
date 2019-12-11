@@ -25,6 +25,8 @@ $aModule = array(
         'KlarnaPayment'                    => 'klarna/core/KlarnaPayment.php',
         'KlarnaOrder'                      => 'klarna/core/KlarnaOrder.php',
         'KlarnaOrderValidator'             => 'klarna/core/KlarnaOrderValidator.php',
+        'KlarnaPaymentHandler'             => 'klarna/core/KlarnaPaymentHandler.php',
+        'KlarnaPaymentHandlerInterface'    => 'klarna/core/KlarnaPaymentHandlerInterface.php',
 
         // controllers
         'klarna_express'                   => 'klarna/controllers/klarna_express.php',
@@ -72,6 +74,7 @@ $aModule = array(
         'oxcountrylist'  => 'klarna/models/klarna_oxcountrylist',
         'oxorderarticle' => 'klarna/models/klarna_oxorderarticle',
         'oxuserpayment'  => 'klarna/models/klarna_oxuserpayment',
+        'oxpaymentgateway' => 'klarna/models/KlarnaPaymentGateway',
 
         // controllers
         'order'          => 'klarna/controllers/klarna_order',

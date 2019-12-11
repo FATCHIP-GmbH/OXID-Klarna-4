@@ -48,24 +48,20 @@ class Klarna_oxOrder extends Klarna_oxOrder_parent
     {
         if ($blUpdate = parent::_setNumber()) {
 
-            if ($this->isKlarna() && empty($this->oxorder__klorderid->value)) {
+            if ($this->isKlarna()) {
 
                 $session = oxRegistry::getSession();
 
                 if ($this->isKP()) {
-                    $klarna_id = $session->getVariable('klarna_last_KP_order_id');
-                    $session->deleteVariable('klarna_last_KP_order_id');
+                    $klarna_id = $this->oxorder__klorderid->value;
                 }
 
                 if ($this->isKCO()) {
                     $klarna_id = $session->getVariable('klarna_checkout_order_id');
+                    $this->oxorder__klorderid = new oxField($klarna_id, oxField::T_RAW);
+                    $this->saveMerchantIdAndServerMode();
+                    $this->save();
                 }
-
-                $this->oxorder__klorderid = new oxField($klarna_id, oxfield::T_RAW);
-
-                $this->saveMerchantIdAndServerMode();
-
-                $this->save();
 
                 try {
                     $sCountryISO = KlarnaUtils::getCountryISO($this->getFieldData('oxbillcountryid'));
@@ -86,7 +82,7 @@ class Klarna_oxOrder extends Klarna_oxOrder_parent
      *
      * @throws oxSystemComponentException
      */
-    protected function saveMerchantIdAndServerMode()
+    public function saveMerchantIdAndServerMode()
     {
         $sCountryISO = KlarnaUtils::getCountryISO($this->getFieldData('oxbillcountryid'));
 
