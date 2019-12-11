@@ -32,6 +32,7 @@ class KlarnaFormatter
         'oxcity'        => 'city',
         'oxstateid'     => 'region',
         'oxmobfon'      => 'phone',
+        'oxfon'         => 'phone',
         'oxcountryid'   => 'country',
         'oxsal'         => 'title',
         'oxcompany'     => 'organization_name',
@@ -74,14 +75,15 @@ class KlarnaFormatter
         $aAddressData['street_number'] = str_replace($aAddressData['street_name'], '', $aAddressData['street_address']);
 
         $oCountry                = oxNew('oxCountry');
-        $aAddressData['country'] = $oCountry->getIdByCode(strtoupper($aAddressData['country']));
+        $countryISO = $aAddressData['country'];
+        $aAddressData['country'] = $oCountry->getIdByCode(strtoupper($countryISO));
 
         $aUserData = array();
         foreach (self::$aFieldMapper as $oxName => $klarnaName) {
             if ($klarnaName === 'street_address') {
                 continue;
             } else if ($klarnaName === 'title') {
-                $aUserData[$sTable . $oxName] = self::formatSalutation($aAddressData[$klarnaName], strtolower($aAddressData['country']));
+                $aUserData[$sTable . $oxName] = self::formatSalutation($aAddressData[$klarnaName], strtolower($countryISO));
             } else {
                 $aUserData[$sTable . $oxName] = trim($aAddressData[$klarnaName]);
             }
