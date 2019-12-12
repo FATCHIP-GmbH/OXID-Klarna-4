@@ -1,5 +1,8 @@
 ### 4.4.3
-* Fix compatiblity issues with old php versions
+* Fix compatibility issues with old php versions
+* PaymentGateway implementation for KlarnaPayments
+* PayPal as External Payment and Checkout fixes
+* Address converter issues fixed
 
 ### 4.4.2
 * Minor bug fix klarna order Registry
