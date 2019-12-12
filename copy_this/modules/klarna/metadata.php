@@ -34,8 +34,6 @@ $aModule = array(
         'klarna_epm_dispatcher'            => 'klarna/controllers/klarna_epm_dispatcher.php',
         'klarna_acknowledge'               => 'klarna/controllers/klarna_acknowledge.php',
         'klarna_validate'                  => 'klarna/controllers/klarna_validate.php',
-        'klarna_selenium_controller'       => 'klarna/tests/oxidTools/klarna_selenium_controller.php',
-        'KlarnaOxidConfig'                 => 'klarna/tests/oxidTools/klarna_oxid_config.php',
 
         //admin
         'klarna_general'                   => 'klarna/controllers/admin/klarna_general.php',
