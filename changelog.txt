@@ -1,8 +1,9 @@
 ### 4.4.3
 * Fix compatibility issues with old php versions
-* PaymentGateway implementation for KlarnaPayments
-* PayPal as External Payment and Checkout fixes
-* Address converter issues fixed
+* refactoring of order execution for Klarna Payments
+* PayPal fixes for salutation, company name and care-of fields
+* rename slice it to financing
+* update Klarna merchant portal URLs
 
 ### 4.4.2
 * Minor bug fix klarna order Registry
