@@ -73,6 +73,7 @@ $aModule = array(
         'oxorderarticle' => 'klarna/models/klarna_oxorderarticle',
         'oxuserpayment'  => 'klarna/models/klarna_oxuserpayment',
         'oxpaymentgateway' => 'klarna/models/KlarnaPaymentGateway',
+        'oxshopcontrol' => 'klarna/core/KlarnaOxShopControl',
 
         // controllers
         'order'          => 'klarna/controllers/klarna_order',
