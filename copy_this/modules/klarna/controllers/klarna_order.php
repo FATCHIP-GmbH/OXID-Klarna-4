@@ -95,6 +95,7 @@ class Klarna_Order extends Klarna_Order_parent
                         $this->_aOrderData = $oClient->getOrder();
                     } catch (KlarnaClientException $oEx) {
                         $oEx->debugOut();
+                        return;
                     }
 
                     if (KlarnaUtils::is_ajax() && $this->_aOrderData['status'] === 'checkout_complete') {
@@ -169,6 +170,11 @@ class Klarna_Order extends Klarna_Order_parent
         }
 
         if ($oBasket->getPaymentId() === 'bestitamazon') {
+            return false;
+        }
+
+        $kcoId = oxRegistry::getSession()->getVariable('klarna_checkout_order_id');
+        if ($oBasket->getPaymentId() === 'oxidpaypal' && $kcoId === null) {
             return false;
         }
 

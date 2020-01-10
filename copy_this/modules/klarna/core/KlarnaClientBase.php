@@ -131,7 +131,7 @@ abstract class KlarnaClientBase extends oxSuperCfg
     protected function handleResponse(Requests_Response $oResponse, $class, $method)
     {
         $successCodes = array(200, 201, 204);
-        $errorCodes   = array(400, 422, 500);
+        $errorCodes   = array(400, 405, 422, 500);
         $message      = "$class::$method %s";
 
         if (in_array($oResponse->status_code, $successCodes)) {
