@@ -264,13 +264,6 @@ class Klarna_Order extends Klarna_Order_parent
             oxRegistry::getSession()->setVariable('sTokenTimeStamp', $dt->getTimestamp());
         }
 
-        if (in_array($paymentId,  klarna_oxpayment::getKlarnaPaymentsIds('KP'))) {
-            // ignore agreements
-            $oConfig = oxRegistry::getConfig();
-            $oConfig->setConfigParam('blConfirmAGB', false);
-            $oConfig->setConfigParam('blEnableIntangibleProdAgreement', false);
-        }
-
         // if user is not logged in set the user
         if(!$this->getUser() && isset($this->_oUser)){
             $this->setUser($this->_oUser);
