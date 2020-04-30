@@ -290,7 +290,7 @@ For a detailed description of the different settings please see the tool-tip fun
     'TCKLARNA_SLICE_IT_START'  => 'Empower your customers to pay over time.',
     'TCKLARNA_PAY_NOW.'        => 'Pay now.',
     'TCKLARNA_PAY_NOW_START'   => 'For consumers, who want to pay everything at once Sofort and Direct Debit are perfect solutions.',
-    'TCKLARNA_CHECKOUT'        => 'Klarna‘s Checkout.​',
+    'TCKLARNA_CHECKOUT'        => 'Klarna‘s Checkout.',
     'TCKLARNA_CHECKOUT_START'  => 'Klarna’s comprehensive online checkout offers all major popular payment methods in one, integrated solution.',
 
     'TCKLARNA_REGISTER_NOW_BUTTON' => 'Register now',
