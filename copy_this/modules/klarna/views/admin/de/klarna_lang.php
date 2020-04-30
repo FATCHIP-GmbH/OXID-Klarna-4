@@ -120,11 +120,11 @@ $aLang = array(
 
     'KL_CHOOSE_KP_OPTIONS'              => 'Bitte wählen Sie die Klarna Payment Optionen, die Sie Ihren Kunden anbieten möchten:',
     'KL_PAY_LATER'                      => 'Pay later',
-    'KL_PAY_LATER_TEXT'                 => 'Die Option “Später bezahlen” macht Kunden den Bezahlvorgang einfach und schnell, ohne dabei persönliche Daten oder komplizierte Nummern eingeben zu müssen. Der Kunde hat die Wahl zwischen Rechnung und im Monat X bezahlen.',
+    'KL_PAY_LATER_TEXT'                 => 'Die Option “Rechnung” macht Kunden den Bezahlvorgang einfach und schnell, ohne dabei persönliche Daten oder komplizierte Nummern eingeben zu müssen. Der Kunde hat die Wahl zwischen Rechnung und im Monat X bezahlen.',
     'KL_SLICE_IT'                       => 'Financing',
-    'KL_SLICE_IT_TEXT'                  => 'Mit “in Raten bezahlen” können Kunden die Einkaufssumme bei geringen Zinsen in Häppchen aufteilen. Das erhöht den Investitionsrahmen und die Kaufkraft. Klarna´s einzigartige Kreditbearbeitung erfordert nur wenige Augenblicke und minimale Dateneingabe. Der Kunde hat die Wahl zwischen fixen und flexiblen Raten.',
+    'KL_SLICE_IT_TEXT'                  => 'Mittels “Ratenkauf” können Kunden die Einkaufssumme bei geringen Zinsen in Häppchen aufteilen. Das erhöht den Investitionsrahmen und die Kaufkraft. Klarna´s einzigartige Kreditbearbeitung erfordert nur wenige Augenblicke und minimale Dateneingabe. Der Kunde hat die Wahl zwischen fixen und flexiblen Raten.',
     'KL_PAY_NOW'                        => 'Sofort bezahlen',
-    'KL_PAY_NOW_TEXT'                   => 'Kunden, die Beträge sofort vollständig beim Bestellabschluss bezahlen möchten, können Klarna´s pay now nutzen. Zur Auswahl steht Lastschrift und das Direktüberweisungsverfahren Sofort.',
+    'KL_PAY_NOW_TEXT'                   => 'Kunden, die Beträge sofort vollständig beim Bestellabschluss bezahlen möchten, können die Option "Sofort bezahlen" nutzen. Zur Auswahl stehen hierbei Kreditkarte, Lastschrift und die Sofortüberweisung.',
     'KL_EXTERNAL_PAYMENTS_ADMIN_DESC'   =>
         'Hier können Sie externe Bezahlarten und externe Checkouts zur Einbindung innerhalb des Klarna Checkout Iframes konfigurieren. 
         Für eine detaillierte Beschreibung der verschiedenen Einstellungen beachten Sie bitte die Tooltips 
@@ -286,7 +286,7 @@ oder wenden Sie sich an den Klarna Integration Support.',
     'TCKLARNA_PAY_LATER.'          => 'Später bezahlen.',
     'TCKLARNA_PAY_LATER_START'     => 'Für Kunden, die jetzt kaufen und bequem später bezahlen möchten.',
     'TCKLARNA_SLICE_IT.'           => 'In Raten bezahlen.',
-    'TCKLARNA_SLICE_IT_START'      => '​Steigern Sie die Kaufkraft Ihrer Kunden durch Zahlung in Raten. ',
+    'TCKLARNA_SLICE_IT_START'      => 'Steigern Sie die Kaufkraft Ihrer Kunden durch Zahlung in Raten.',
     'TCKLARNA_PAY_NOW.'            => 'Sofort bezahlen.',
     'TCKLARNA_PAY_NOW_START'       => 'Einfache und schnelle Direktbezahlung mit Klarna‘s Sofort bezahlen. In Deutschland sollten Sofortüberweisung und Lastschrift im Portfolio nicht fehlen.',
     'TCKLARNA_CHECKOUT'            => 'Der Klarna Checkout.​',
