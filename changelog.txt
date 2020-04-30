@@ -1,3 +1,10 @@
+### 4.4.4
+* Change Klarna Contact information
+* Bugfix: Don't show KCO country selector popup when only one country is active
+* Fix Javascript problem when custom theme is in use
+* Rename Klarna Payment methods
+* Update Pay Now and Pay later translation
+
 ### 4.4.3
 * Fix compatibility issues with old php versions
 * refactoring of order execution for Klarna Payments
