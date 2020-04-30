@@ -283,7 +283,7 @@ oder wenden Sie sich an den Klarna Integration Support.',
     'TCKLARNA_B2BOTH' => 'Sowohl B2C als auch B2B Kunden',
 
     'TCKLARNA_EASY'                => 'So einfach ist es, Klarna zu aktiveren',
-    'TCKLARNA_PAY_LATER.'          => 'Später bezahlen.',
+    'TCKLARNA_PAY_LATER.'          => 'Rechnung.',
     'TCKLARNA_PAY_LATER_START'     => 'Für Kunden, die jetzt kaufen und bequem später bezahlen möchten.',
     'TCKLARNA_SLICE_IT.'           => 'In Raten bezahlen.',
     'TCKLARNA_SLICE_IT_START'      => 'Steigern Sie die Kaufkraft Ihrer Kunden durch Zahlung in Raten.',
