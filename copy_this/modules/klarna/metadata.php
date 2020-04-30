@@ -9,8 +9,8 @@ $aModule = array(
     'version'     => '4.4.3',
     'author'      => '<a href="https://www.cgrd.de/oxid-eshop" target="_blank">https://www.cgrd.de/oxid-eshop</a>',
     'thumbnail'   => '/out/admin/img/klarna_lockup_black.jpg',
-    'url'         => 'http://integration.klarna.com',
-    'email'       => 'integration@klarna.com',
+    'url'         => 'https://www.klarna.com/de/verkaeufer/plattformen-und-partner/oxid/',
+    'email'       => 'oxid@klarna.com',
     'files'       => array(
         // core classes
         'KlarnaInstaller'                  => 'klarna/core/KlarnaInstaller.php',
