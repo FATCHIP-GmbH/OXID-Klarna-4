@@ -126,7 +126,7 @@ $aLang = array(
     'KL_SLICE_IT'          => 'Financing',
     'KL_SLICE_IT_TEXT'     => 'Your customers can spread the cost of their purchases at a low interest rate, giving them flexibility and increased purchasing power. Our unique credit application requires minimal information and takes just seconds to complete.',
     'KL_PAY_NOW'           => 'Pay Now',
-    'KL_PAY_NOW_TEXT'      => 'Customers who want to pay in full at checkout can do it quickly and securely with Klarnas Pay now-option - using credit/debit card or Direct bank transfer: Klarna Direkt, Sofort, SEPA Direct Debit.',
+    'KL_PAY_NOW_TEXT'      => 'Customers who want to pay in full at checkout can do it quickly and securely with Klarnas Pay now-option - using Direct debit, Online Bank Transfer or Card.',
 
     'KL_EXTERNAL_PAYMENTS_ADMIN_DESC'   =>
         'Here you can configure External Payment Methods and External Checkouts to be included inside the Klarna Checkout Iframe. 
