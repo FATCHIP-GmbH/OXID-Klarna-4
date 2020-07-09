@@ -280,7 +280,9 @@ oder wenden Sie sich an den Klarna Integration Support.',
     'TCKLARNA_CUSTOMER_TYPE_TOOLTIP' => 'Hier können Sie einstellen, ob der Shop ausschließlich B2C Transaktionen (Standard-Einstellung). nur B2B Transaktionen oder sowohl B2C als auch B2B Transaktionen akzeptieren soll.',
     'TCKLARNA_B2C' => 'Nur B2C Kunden',
     'TCKLARNA_B2B' => 'Nur B2B Kunden',
-    'TCKLARNA_B2BOTH' => 'Sowohl B2C als auch B2B Kunden',
+    'TCKLARNA_B2B_B2C'               => 'Hauptsächlich B2B Kunden, aber auch B2C Kunden',
+    'TCKLARNA_B2C_B2B'               => 'Hauptsächlich B2C Kunden, aber auch B2B Kunden',
+
 
     'TCKLARNA_EASY'                => 'So einfach ist es, Klarna zu aktiveren',
     'TCKLARNA_PAY_LATER.'          => 'Rechnung.',
@@ -297,5 +299,8 @@ oder wenden Sie sich an den Klarna Integration Support.',
     'TCKLARNA_REACH_SUPPORT'       => 'Kontaktieren Sie Klarna‘s Merchant Support',
 
     'KL_EU_WARNING' => '<p>Um mit der EU Geoblocking Verordnung übereinzustimmen, wird dringend empfohlen, alle europäischen Länder zu aktivieren und der Bezahlmethode Klarna Checkout zuzweisen.</p><p>Es fehlen folgende Länder: %s</p>',
-
+    
+    'TCKLARNA_SHIPPING_KCO' => 'Versandarten-Zuordnung für den Klarna Checkout',
+    'TCKLARNA_SHIPPING_KCO_DESC' => 'Bitte ordnen Sie Ihren definierten Versandarten die entsprechenden Klarna Bezeichnungen zu. Über diese Zuordnung richten Sie unter anderem die Lieferung an Packstationen ein.',
+    'TCKLARNA_SHIPPING_SETTINGS' => 'Versandarten',
 );

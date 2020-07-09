@@ -11,6 +11,7 @@ $aLang = array(
     'KL_CHECKOUT'               => 'Checkout',
 
     'KL_DISCOUNT_TITLE'                     => 'Discount',
+    'TCKLARNA_SURCHARGE_TITLE'              => 'Surcharge',
     'KL_VOUCHER_DISCOUNT'                   => 'Coupon Discount',
     'KL_GIFT_WRAPPING_TITLE'                => 'Gift wrapping',
     'KL_GIFT_CARD_TITLE'                    => 'Gift card',

@@ -603,4 +603,10 @@ class Klarna_oxOrder extends Klarna_oxOrder_parent
 
         return $this->isAnonymous = KlarnaUtils::getShopConfVar('blKlarnaEnableAnonymization');
     }
+
+    protected function _sendOrderByEmail($oUser = null, $oBasket = null, $oPayment = null) {
+        $oPayment->oxpayments__oxdesc->value = str_replace('Klarna ', '', $oPayment->oxpayments__oxdesc->value);
+
+        return parent::_sendOrderByEmail($oUser, $oBasket, $oPayment);
+    }
 }

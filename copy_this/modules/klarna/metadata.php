@@ -44,6 +44,7 @@ $aModule = array(
         'klarna_external_payments'         => 'klarna/controllers/admin/klarna_external_payments.php',
         'klarna_emd_admin'                 => 'klarna/controllers/admin/klarna_emd_admin.php',
         'klarna_orders'                    => 'klarna/controllers/admin/klarna_orders.php',
+        'klarna_shipping'                  => 'klarna/controllers/admin/klarna_shipping.php',
 
         // models
         'klarna_emd'                       => 'klarna/models/klarna_emd.php',
@@ -117,6 +118,8 @@ $aModule = array(
         'kl_klarna_external_payments.tpl'       => 'klarna/views/admin/tpl/kl_klarna_external_payments.tpl',
         'kl_klarna_emd_admin.tpl'               => 'klarna/views/admin/tpl/kl_klarna_emd_admin.tpl',
         'kl_klarna_orders.tpl'                  => 'klarna/views/admin/tpl/kl_klarna_orders.tpl',
+        'tcklarna_shipping.tpl'                 => 'klarna/views/admin/tpl/tcklarna_shipping.tpl',
+
         //admin partial
         'kl_country_creds.tpl'                  => 'klarna/views/admin/tpl/kl_country_creds.tpl',
         'kl_header.tpl'                         => 'klarna/views/admin/tpl/kl_header.tpl',

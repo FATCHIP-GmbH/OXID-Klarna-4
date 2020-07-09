@@ -88,6 +88,9 @@ class KlarnaPayment extends oxBase
     /** @var int Session timeout (24h) in seconds */
     protected $sessionTimeout = 86400;
 
+    /** @var string */
+    protected $activeB2Option;
+    
     /** @var string current action for ajax request */
     public $action;
 
@@ -152,17 +155,12 @@ class KlarnaPayment extends oxBase
             ),
         );
 
-        $this->_aUserData   = $oUser->getKlarnaPaymentData($this->b2bAllowed);
+        $this->_aUserData   = $oUser->getKlarnaPaymentData();
         $this->_aOrderLines = $oBasket->getKlarnaOrderLines();
         $this->_aOrderLines['locale'] = $sLocale;
         $this->_aOrderData  = array_merge($this->_aOrderData, $this->_aOrderLines);
         $this->addOptions();
-
-        if($this->isB2B()) {
-            $this->_aOrderData['customer']['type'] = 'organization';
-            $this->_aOrderData['options']['allowed_customer_types'] = array( 'organization', 'person');
-        }
-
+        $this->setCustomerData();
         $this->checksumCheck();
 
         if (!(KlarnaUtils::is_ajax()) && $this->isAuthorized() && $this->aUpdateData) {
@@ -183,20 +181,25 @@ class KlarnaPayment extends oxBase
     {
         $this->b2bAllowed = false;
         $this->b2cAllowed = true;
-        $activeB2Option = KlarnaUtils::getShopConfVar('sKlarnaB2Option');
+        $this->activeB2Option = KlarnaUtils::getShopConfVar('sKlarnaB2Option');
 
-        if(in_array($activeB2Option, array('B2B', 'B2BOTH'))){
+        if(strpos($this->activeB2Option, 'B2B') !== false){
             $this->b2bAllowed = in_array($sCountryISO, KlarnaConsts::getKlarnaKPB2BCountries());
         }
 
-        if($activeB2Option === 'B2B'){
+        if($this->activeB2Option === 'B2B'){
             $this->b2cAllowed = false;
         }
     }
 
-    public function isB2BAllowed()
-    {
-        return $this->b2bAllowed;
+    protected function setCustomerData() {
+        $append = array();
+        if ($this->isB2B()) {
+            $append['customer']['type'] = 'organization';
+        } else {
+            $append['customer']['type'] = 'person';
+        }
+        $this->_aOrderData += $append;
     }
 
     public function isB2B()

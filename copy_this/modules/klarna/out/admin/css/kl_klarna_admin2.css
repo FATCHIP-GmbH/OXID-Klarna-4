@@ -1990,3 +1990,9 @@ p {
 .equalHMV:nth-of-type(3n+1) {
     margin-left: 0;
 }
+
+#b2optionSelector {margin-left: 40px;}
+#b2optionSelector,
+#b2optionSelector .selector__choices,
+#b2optionSelector .selector__item,
+#b2optionSelector .selector__item--selected {width: 400px;}
