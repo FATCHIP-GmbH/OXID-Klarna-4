@@ -8,7 +8,7 @@
             <SUBMENU id="KL_KLARNADESIGN" cl="klarna_design" />
             <SUBMENU id="KL_EXTERNAL_PAYMENTS" cl="klarna_external_payments" />
             <SUBMENU id="KL_EXTRA_MERCHANT_DATA" cl="klarna_emd_admin" />
-            <SUBMENU id="TCKLARNA_SHIPPING_SETTINGS" cl="KlarnaShipping" />
+            <SUBMENU id="TCKLARNA_SHIPPING_SETTINGS" cl="klarna_shipping" />
         </MAINMENU>
         <MAINMENU id="mxorders">
             <SUBMENU id="mxdisplayorders" cl="admin_order" list="order_list">
