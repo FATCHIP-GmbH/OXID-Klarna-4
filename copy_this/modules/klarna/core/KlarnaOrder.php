@@ -294,8 +294,7 @@ class KlarnaOrder extends oxBase
         $this->_selectedShippingSetId = $oBasket->getShippingId();
 
         $shippingOptions = array();
-        $shippingMap = oxRegistry::getConfig()->getShopConfVar('aarrKlarnaShippingMap');
-
+        $shippingMap = KlarnaUtils::getShopConfVar('aarrKlarnaShippingMap');
 
         foreach ($allSets as $shippingId => $shippingMethod) {
             $assignedShippingMethod = isset($shippingMap[$shippingId]) ? $shippingMap[$shippingId] : false;
