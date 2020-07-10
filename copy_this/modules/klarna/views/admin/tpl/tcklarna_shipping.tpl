@@ -20,7 +20,7 @@
                   enctype="multipart/form-data"
             <input type="hidden" name="MAX_FILE_SIZE" value="[{$iMaxUploadFileSize}]">
             [{$oViewConf->getHiddenSid()}]
-            <input type="hidden" name="cl" value="KlarnaShipping">
+            <input type="hidden" name="cl" value="klarna_shipping">
             <input type="hidden" name="fnc" value="save">
 
             <table class="klarna-conf-table fix1">
