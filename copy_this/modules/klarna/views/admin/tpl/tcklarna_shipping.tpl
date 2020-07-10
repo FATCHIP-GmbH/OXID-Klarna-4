@@ -1,7 +1,7 @@
 [{assign var="lang_tag" value=$languages.$editlanguage->abbr|oxupper}]
 
 <link rel="stylesheet" href="[{$oViewConf->getResourceUrl()}]main.css">
-<link rel="stylesheet" href="[{$oViewConf->getModuleUrl('klarna', 'out/admin/css/tcklarna_admin2.css')}]">
+<link rel="stylesheet" href="[{$oViewConf->getModuleUrl('klarna', 'out/admin/css/kl_klarna_admin2.css')}]">
 <link rel="stylesheet" href="[{$oViewConf->getModuleUrl('klarna', 'out/admin/css/tooltipster.bundle.min.css')}]">
 <link rel="stylesheet"
       href="[{$oViewConf->getModuleUrl('klarna', 'out/admin/css/tooltipster-sideTip-light.min.css')}]">
@@ -75,7 +75,7 @@
 </div>
 
 
-<script src="[{$oViewConf->getModuleUrl('klarna', 'out/admin/js/tcklarna_admin_lib.js')}]"></script>
+<script src="[{$oViewConf->getModuleUrl('klarna', 'out/admin/js/kl_admin_lib.js')}]"></script>
 
 <script>
 [{capture assign="jsCode"}]
