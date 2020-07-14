@@ -1,3 +1,10 @@
+### 4.5.0
+* Packstation implementation for KCO
+* Improved configuration options for a B2B and B2C store
+* oxDiscout object with negative oxPrice value transferred as surcharge to Klarna API
+* Word "Klarna" removed from payment method name on user views: order overview, email
+* Improved logging for patch order request
+
 ### 4.4.4
 * Change Klarna Contact information
 * Bugfix: Don't show KCO country selector popup when only one country is active

@@ -37,11 +37,10 @@ class klarna_oxuser extends klarna_oxuser_parent
     protected $_countryISO;
 
     /**
-     * @param bool $isB2BAvailable
      * @return array
      * @throws oxSystemComponentException
      */
-    public function getKlarnaData($isB2BAvailable = false)
+    public function getKlarnaData()
     {
         $shippingAddress = null;
         $result          = array();
@@ -49,9 +48,7 @@ class klarna_oxuser extends klarna_oxuser_parent
         if ((bool)KlarnaUtils::getShopConfVar('blKlarnaEnablePreFilling')) {
             $this->preFillAddress($result);
         }
-
-        $billingAddress = KlarnaFormatter::oxidToKlarnaAddress($this);
-
+        
         if ($sCountryISO = $this->getConfig()->getRequestParameter('selected-country')) {
             if (oxRegistry::getSession()->hasVariable('invadr')) {
                 oxRegistry::getSession()->deleteVariable('invadr');
@@ -59,11 +56,7 @@ class klarna_oxuser extends klarna_oxuser_parent
             $result['billing_address']['country'] = $sCountryISO;
             oxRegistry::getSession()->setVariable('sCountryISO', $sCountryISO);
         }
-
-        if($isB2BAvailable && !empty($billingAddress['organization_name'])){
-            $result['customer']['type'] = 'organization';
-        }
-
+        
         return $result;
     }
 
@@ -73,18 +66,10 @@ class klarna_oxuser extends klarna_oxuser_parent
      */
     protected function preFillAddress(&$result)
     {
-        $customer = array(
-            'type' => 'person',
-        );
-
         $userBirthDate = $this->getFieldData('oxbirthdate');
         if ($userBirthDate && $userBirthDate != '0000-00-00') {
             $customer['date_of_birth'] = $userBirthDate;
         }
-
-        $result = array(
-            'customer' => $customer,
-        );
 
         $blShowShippingAddress = (bool)oxRegistry::getSession()->getVariable('blshowshipaddress');
 
@@ -102,11 +87,10 @@ class klarna_oxuser extends klarna_oxuser_parent
 
     /**
      * Applicable in KP mode
-     * @param bool $isB2BAvailable
      * @return array
      * @throws oxSystemComponentException
      */
-    public function getKlarnaPaymentData($isB2BAvailable = false)
+    public function getKlarnaPaymentData()
     {
         $customer = array(
             'date_of_birth' => null,
@@ -123,18 +107,12 @@ class klarna_oxuser extends klarna_oxuser_parent
             $shippingAddress = KlarnaFormatter::oxidToKlarnaAddress($oAddress);
         }
 
-        $aUserData = array(
+        return array(
             'billing_address'  => $billingAddress,
             'shipping_address' => isset($shippingAddress) ? $shippingAddress : $billingAddress,
             'customer'         => $customer,
             'attachment'       => $this->addAttachmentsData(),
         );
-
-        if($isB2BAvailable && !empty($billingAddress['organization_name'])){
-            $aUserData['customer']['type'] = 'organization';
-        }
-
-        return $aUserData;
     }
 
     /**

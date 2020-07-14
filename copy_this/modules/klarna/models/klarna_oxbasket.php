@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Klarna AB
  *
@@ -400,16 +401,26 @@ class klarna_oxbasket extends klarna_oxbasket_parent
      */
     protected function _getKlarnaCheckoutDiscount(oxPrice $oPrice, $iLang = null)
     {
-        $unit_price = -KlarnaUtils::parseFloatAsInt($oPrice->getBruttoPrice() * 100);
+        $value = $oPrice->getBruttoPrice();
+        $type = 'discount';
+        $reference = 'SRV_DISCOUNT';
+        $name = html_entity_decode(oxRegistry::getLang()->translateString('KL_DISCOUNT_TITLE', $iLang), ENT_QUOTES);
+        if ($value < 0) {
+            $type = 'surcharge';
+            $reference = 'SRV_SURCHARGE';
+            $name = html_entity_decode(oxRegistry::getLang()->translateString('TCKLARNA_SURCHARGE_TITLE', $iLang), ENT_QUOTES);
+        }
+
+        $unit_price = -KlarnaUtils::parseFloatAsInt( $value * 100);
         $tax_rate   = KlarnaUtils::parseFloatAsInt($this->getOrderVatAverage() * 100);
 
         $aItem = array(
-            'type'             => 'discount',
-            'reference'        => 'SRV_DISCOUNT',
-            'name'             => html_entity_decode(oxRegistry::getLang()->translateString('KL_DISCOUNT_TITLE', $iLang), ENT_QUOTES),
+            'type'             => $type,
+            'reference'        => $reference,
+            'name'             => $name,
             'quantity'         => 1,
             'total_amount'     => $unit_price,
-            'unit_price'       => -KlarnaUtils::parseFloatAsInt($oPrice->getBruttoPrice() * 100),
+            'unit_price'       => $unit_price,
             'tax_rate'         => $tax_rate,
             'total_tax_amount' => KlarnaUtils::parseFloatAsInt($unit_price - round($unit_price / ($tax_rate / 10000 + 1), 0)),
         );

@@ -109,7 +109,11 @@ Selector2.prototype.init = function () {
     if (selected) {
         selected.index = Array.prototype.indexOf.call(this.choices.childNodes, selected);
         this.choices.insertBefore(this.choices.childNodes[selected.index], this.choices.childNodes[0]); // move selected to the top
-        this.emptyOption = false;
+        if(this.emptyOption === 'keep') {
+            this.choices.insertBefore($('<li class="selector__item--selected"><a href="#" data-value="" style="height: 100%"></a></li>')[0], this.choices.childNodes[1]);
+        } else {
+            this.emptyOption = false;
+        }
     } else if(this.emptyOption){
         this.setEmptyOption();
     } else {
@@ -136,9 +140,8 @@ Selector2.prototype.setEmptyOption = function(){
     if(selected){
         selected.className = 'selector__item';
     }
-    this.choices.insertBefore($('<li class="selector__item--selected"></li>')[0], this.choices.childNodes[0]);
+    this.choices.insertBefore($('<li class="selector__item--selected"><a href="#" data-value="" style="height: 100%"></a></li>')[0], this.choices.childNodes[0]);
     this.hiddenInput.value = null;
-    this.emptyOption = true;
 };
 
 Selector2.prototype.cleanChoices = function () {
@@ -155,7 +158,7 @@ Selector2.prototype.selectItem = function (event) {
     this.beforeSelect.call(this, this.choices.childNodes[0]);
 
     //remove empty option
-    if(this.choices.childNodes[0].innerHTML == ''){
+    if(this.emptyOption !== 'keep' && this.choices.childNodes[0].innerHTML == ''){
         this.emptyOption = false;
         this.choices.childNodes[0].remove();
     }
@@ -186,7 +189,7 @@ Selector2.prototype.selectItemIndex = function (index) {
     this.choices.insertBefore(this.choices.childNodes[index], this.choices.childNodes[0]);                          // move selected to the top
 
     if (this.hiddenInput) {
-        this.hiddenInput.value = event.target.getAttribute('data-value');
+        this.hiddenInput.value = getElementA(this.choices.childNodes[index]).getAttribute('data-value');
     }
     // hide element for 100ms to force blur event on the element
     this.choices.style.display = 'none';
@@ -224,6 +227,9 @@ Selector2.prototype.selectFirst = function () {
     if (this.choices.childNodes.length == 0)
         return;
     this.choices.childNodes[0].className = 'selector__item--selected';
+    if (this.hiddenInput) {
+        this.hiddenInput.value = getElementA(this.choices.childNodes[0]).getAttribute('data-value');
+    }
 };
 
 Selector2.prototype.getSelection = function () {
@@ -332,7 +338,6 @@ var MultiLangWidget = {
         event.preventDefault();
         var $msgBox = $('.messagebox.info');
         this.serializeForm();
-        var actionUrl = this.$form.attr('action');
         $.post(this.$form.attr('action'), this.$form.serialized);
         $msgBox.slideDown(function () {
             setTimeout(function () {

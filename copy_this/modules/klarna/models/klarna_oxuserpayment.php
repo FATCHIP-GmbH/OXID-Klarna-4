@@ -34,7 +34,7 @@ class klarna_oxuserpayment extends klarna_oxuserpayment_parent
     {
         $paymentId = $this->oxuserpayments__oxpaymentsid->value;
         if ($paymentId === 'klarna_checkout') {
-            return '//cdn.klarna.com/1.0/shared/image/generic/logo/en_gb/basic/logo_black.png';
+            return '//cdn.klarna.com/1.0/shared/image/generic/logo/en_gb/basic/logo_black.png?width=140';
         }
 
         $oPayment = oxNew('oxPayment');

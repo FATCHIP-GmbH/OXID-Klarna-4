@@ -407,5 +407,6 @@
         </form>
     </div>
 </div>
+<div style="height: 80px"></div>
 <script src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/js/kl_admin_lib.js') }]"></script>
 <script src="[{ $oViewConf->getKlarnaModuleUrl('out/admin/js/kl_admin_general.js') }]"></script>

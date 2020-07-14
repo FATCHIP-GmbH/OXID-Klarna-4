@@ -6,7 +6,7 @@ $aModule = array(
         'de' => 'Egal was Sie verkaufen, unsere Produkte sind dafür gemacht, Ihren Kunden das beste Erlebnis zu bereiten. Das gefällt nicht nur Ihnen, sondern auch uns! Die Klarna Plugins werden stets auf Herz und Nieren geprüft und können ganz einfach durch Sie oder Ihre technischen Ansprechpartner aktiviert werden. Das nennen wir smoooth. Hier können Sie sowohl Klarna Payments aktivieren und anschließend genau die Zahlarten auswählen, die Sie wünschen oder mit der Komplettlösung, dem Klarna Checkout, Ihre Customer Journey optimieren. Erfahren Sie hier mehr zu Klarna für OXID: <a href="https://www.klarna.com/de/verkaeufer/oxid/" target="_blank">https://www.klarna.com/de/verkaeufer/oxid/</a> Und so einfach ist die Integration: <a href="https://hello.klarna.com/rs/778-XGY-327/images/How_to_OXID.mp4" target="_blank">Zum Video</a>',
         'en' => 'No matter what you sell, our products are made to give your customers the best purchase experience. This is not only smoooth for you - it is smoooth for us, too! Klarna plugins are always tested and can be activated by you or your technical contact with just a few clicks. That is smoooth. Here you can activate Klarna Payments and then select exactly the payment methods you want or optimize your customer journey with the complete Klarna Checkout solution. Find out more about Klarna for OXID: <a href="https://www.klarna.com/de/verkaeufer/oxid/" target="_blank">https://www.klarna.com/de/verkaeufer/oxid/</a> Integrating Klarna at OXID is easy as pie: <a href="https://hello.klarna.com/rs/778-XGY-327/images/How_to_OXID.mp4" target="_blank">to the video (click)</a>'
     ),
-    'version'     => '4.4.4',
+    'version'     => '4.5',
     'author'      => '<a href="https://www.cgrd.de/oxid-eshop" target="_blank">https://www.cgrd.de/oxid-eshop</a>',
     'thumbnail'   => '/out/admin/img/klarna_lockup_black.jpg',
     'url'         => 'https://www.klarna.com/de/verkaeufer/plattformen-und-partner/oxid/',
@@ -44,6 +44,7 @@ $aModule = array(
         'klarna_external_payments'         => 'klarna/controllers/admin/klarna_external_payments.php',
         'klarna_emd_admin'                 => 'klarna/controllers/admin/klarna_emd_admin.php',
         'klarna_orders'                    => 'klarna/controllers/admin/klarna_orders.php',
+        'klarna_shipping'                  => 'klarna/controllers/admin/klarna_shipping.php',
 
         // models
         'klarna_emd'                       => 'klarna/models/klarna_emd.php',
@@ -117,6 +118,8 @@ $aModule = array(
         'kl_klarna_external_payments.tpl'       => 'klarna/views/admin/tpl/kl_klarna_external_payments.tpl',
         'kl_klarna_emd_admin.tpl'               => 'klarna/views/admin/tpl/kl_klarna_emd_admin.tpl',
         'kl_klarna_orders.tpl'                  => 'klarna/views/admin/tpl/kl_klarna_orders.tpl',
+        'tcklarna_shipping.tpl'                 => 'klarna/views/admin/tpl/tcklarna_shipping.tpl',
+
         //admin partial
         'kl_country_creds.tpl'                  => 'klarna/views/admin/tpl/kl_country_creds.tpl',
         'kl_header.tpl'                         => 'klarna/views/admin/tpl/kl_header.tpl',

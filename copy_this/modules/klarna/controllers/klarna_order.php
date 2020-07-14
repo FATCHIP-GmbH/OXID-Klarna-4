@@ -656,6 +656,13 @@ class Klarna_Order extends Klarna_Order_parent
     protected function shipping_option_change($aPost)
     {
         if (isset($aPost['id'])) {
+            // clean up duplicated method id
+            $selectedDuplicate = null;
+            if (strpos($aPost['id'], KlarnaOrder::PACK_STATION_PREFIX) === 0) {
+                $selectedDuplicate = $aPost['id'];
+                $aPost['id'] = substr($aPost['id'], strlen(KlarnaOrder::PACK_STATION_PREFIX));
+            }
+            oxRegistry::getSession()->setVariable('tcKlarnaSelectedDuplicate', $selectedDuplicate);
 
             // update basket
             $oSession = oxRegistry::getSession();
@@ -1088,5 +1095,12 @@ class Klarna_Order extends Klarna_Order_parent
         }
 
         return $sDelAddress;
+    }
+    
+    public function getPayment() {
+        $oPayment = parent::getPayment();
+        $oPayment->oxpayments__oxdesc->value = str_replace('Klarna ', '', $oPayment->oxpayments__oxdesc->value);
+
+        return $oPayment;
     }
 }

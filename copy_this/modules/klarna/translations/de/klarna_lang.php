@@ -11,6 +11,7 @@ $aLang = array(
     'KL_CHECKOUT'               => 'Kasse',
 
     'KL_DISCOUNT_TITLE'                     => 'Rabatt',
+    'TCKLARNA_SURCHARGE_TITLE'              => 'Aufschlag',
     'KL_VOUCHER_DISCOUNT'                   => 'Gutschein Rabatt',
     'KL_GIFT_WRAPPING_TITLE'                => 'Geschenkverpackung',
     'KL_GIFT_CARD_TITLE'                    => 'Grußkarte',
