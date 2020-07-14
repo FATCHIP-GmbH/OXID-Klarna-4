@@ -1,7 +1,5 @@
 <?php
 
-use OxidEsales\Eshop\Core\Registry;
-
 /**
  * Copyright 2018 Klarna AB
  *
