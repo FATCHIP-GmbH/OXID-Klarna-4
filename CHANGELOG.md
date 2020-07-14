@@ -1,6 +1,6 @@
 ### 4.5.0
 * Packstation implementation for KCO
-* Improved Ability to configure B2B or B2C shop in KCO context
+* Improved configuration options for a B2B and B2C store
 * oxDiscout object with negative oxPrice value transferred as surcharge to Klarna API
 * Word "Klarna" removed from payment method name on user views: order overview, email
 * Improved logging for patch order request
