@@ -193,7 +193,7 @@ class KlarnaConsts
             $lang      = $langArray[$oLang->getTplLanguage()]->abbr;
         }
 
-        $defaultLocales = array(
+        $defaultLocales = [
             'en' => 'en-GB',
             'nb' => 'nb-NO',
             'da' => 'da-DK',
@@ -202,8 +202,11 @@ class KlarnaConsts
             'fi' => 'fi-FI',
             'sv' => 'sv-SE',
             'at' => 'de-AT',
-            'us' => 'en-US'
-        );
+            'us' => 'en-US',
+            'be' => 'fr-BE',
+            'fr' => 'fr-fr',
+            'es' => 'es-ES'
+        ];
 
         $sCountryISO = oxRegistry::getSession()->getVariable('sCountryISO');
 
