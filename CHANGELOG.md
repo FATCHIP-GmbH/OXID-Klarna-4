@@ -1,3 +1,6 @@
+### 4.6.0
+* Add Klarna Support for new countries: IT, ES, FR and BE
+
 ### 4.5.0
 * Packstation implementation for KCO
 * Improved configuration options for a B2B and B2C store
