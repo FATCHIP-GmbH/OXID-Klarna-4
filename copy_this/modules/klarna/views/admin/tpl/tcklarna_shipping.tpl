@@ -13,7 +13,7 @@
 
 <div class="[{$box|default:'box'}]" style="[{if !$box && !$bottom_buttons}]height: 100%;[{/if}]">
     <div class="main-container">
-        [{include file="tcklarna_header.tpl" title="TCKLARNA_SHIPPING_KCO"|oxmultilangassign desc="TCKLARNA_SHIPPING_KCO_DESC"|oxmultilangassign}]
+        [{include file="kl_header.tpl" title="TCKLARNA_SHIPPING_KCO"|oxmultilangassign desc="TCKLARNA_SHIPPING_KCO_DESC"|oxmultilangassign}]
         <hr>
         <div class="klarna-expandable-list">
             <form name="myedit" id="myedit" method="post" action="[{$oViewConf->getSelfLink()}]"
