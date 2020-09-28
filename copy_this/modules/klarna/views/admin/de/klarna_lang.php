@@ -303,4 +303,5 @@ oder wenden Sie sich an den Klarna Integration Support.',
     'TCKLARNA_SHIPPING_KCO' => 'Versandarten-Zuordnung für den Klarna Checkout',
     'TCKLARNA_SHIPPING_KCO_DESC' => 'Bitte ordnen Sie Ihren definierten Versandarten die entsprechenden Klarna Bezeichnungen zu. Über diese Zuordnung richten Sie unter anderem die Lieferung an Packstationen ein.',
     'TCKLARNA_SHIPPING_SETTINGS' => 'Versandarten',
+    'TCKLARNA_PACKSTATION_NO_SHIPPING_SET' => 'Keine aktiven Versandarten gefunden',
 );

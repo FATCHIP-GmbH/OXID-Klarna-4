@@ -304,4 +304,5 @@ For a detailed description of the different settings please see the tool-tip fun
     'TCKLARNA_SHIPPING_KCO' => 'Shipping sets assignments for the Klarna Checkout',
     'TCKLARNA_SHIPPING_KCO_DESC' => 'Please assign your defined shipping sets to the corresponding Klarna labels. By this assignment you can amongst others enable Packstation deliveries.',
     'TCKLARNA_SHIPPING_SETTINGS' => 'Shipping sets',
+    'TCKLARNA_PACKSTATION_NO_SHIPPING_SET' => 'No active shipping sets found',
 );
