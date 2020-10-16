@@ -70,9 +70,11 @@ class KlarnaPaymentHandler implements KlarnaPaymentHandlerInterface
 
     protected function updateOrder(oxOrder $oOrder, $response)
     {
-        $oOrder->oxorder__klorderid = new oxField($response['order_id'], oxField::T_RAW);
-        $oOrder->saveMerchantIdAndServerMode();
-        $oOrder->save();
+        if(!empty($response['order_id'])) {
+            $oOrder->oxorder__klorderid = new oxField($response['order_id'], oxField::T_RAW);
+            $oOrder->saveMerchantIdAndServerMode();
+            $oOrder->save();
+        }
     }
 
     /**
