@@ -1,3 +1,6 @@
+### 4.6.1
+* Fix conflicts with payone module
+
 ### 4.6.0
 * Add Klarna Support for new countries: IT, ES, FR and BE
 
