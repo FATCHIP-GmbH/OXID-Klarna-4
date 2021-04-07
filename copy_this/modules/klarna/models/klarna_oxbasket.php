@@ -435,66 +435,7 @@ class klarna_oxbasket extends klarna_oxbasket_parent
      */
     public function kl_calculateDeliveryCost()
     {
-        if ($this->_oDeliveryPrice !== null) {
-            return $this->_oDeliveryPrice;
-        }
-        $myConfig       = oxRegistry::getConfig();
-        $oDeliveryPrice = oxNew('oxprice');
-
-        if (oxRegistry::getConfig()->getConfigParam('blDeliveryVatOnTop')) {
-            $oDeliveryPrice->setNettoPriceMode();
-        } else {
-            $oDeliveryPrice->setBruttoPriceMode();
-        }
-
-        // don't calculate if not logged in
-        $oUser = $this->getBasketUser();
-
-        if (!$oUser && !$myConfig->getConfigParam('blCalculateDelCostIfNotLoggedIn')) {
-            return $oDeliveryPrice;
-        }
-
-        $fDelVATPercent = $this->getAdditionalServicesVatPercent();
-        $oDeliveryPrice->setVat($fDelVATPercent);
-
-        // list of active delivery costs
-        $this->handleDeliveryCosts($myConfig,$oUser,$oDeliveryPrice,$fDelVATPercent);
-
-        return $oDeliveryPrice;
-    }
-
-    protected function handleDeliveryCosts(oxConfig $myConfig, $oUser, oxPrice &$oDeliveryPrice, $fDelVATPercent)
-    {
-        // list of active delivery costs
-        if ($myConfig->getConfigParam('bl_perfLoadDelivery')) {
-            /** @var oxDeliveryList Create new oxDeliveryList to get proper content */
-            $oDeliveryList = oxNew("oxDeliveryList");
-            $aDeliveryList = $oDeliveryList->getDeliveryList(
-                $this,
-                $oUser,
-                $this->_findDelivCountry(),
-                $this->getShippingId()
-            );
-
-            if (count($aDeliveryList) > 0) {
-                foreach ($aDeliveryList as $oDelivery) {
-                    //debug trace
-                    if ($myConfig->getConfigParam('iDebug') == 5) {
-                        echo("Delivery Cost : " . $oDelivery->oxdelivery__oxtitle->value . "<br>");
-                    }
-                    $oDeliveryPrice->addPrice($oDelivery->getDeliveryPrice($fDelVATPercent));
-                }
-            }
-        }
-    }
-
-    protected function _calcDeliveryCost()
-    {
-        if (KlarnaUtils::isKlarnaPaymentsEnabled()) {
-            return $this->kl_calculateDeliveryCost();
-        } else {
-            return parent::_calcDeliveryCost();
-        }
+        return parent::_calcDeliveryCost();
     }
 
     /**
