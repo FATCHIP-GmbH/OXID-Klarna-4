@@ -62,6 +62,10 @@ $aLang = array(
     'KL_CREATE_USER_ACCOUNT_AND_SUBSCRIBE' => 'Kundenkonto anlegen UND Newsletter-Anmeldung',
     'KL_NO_CHECKBOX'                       => 'Keine Checkbox anzeigen',
 
+    'TCKLARNA_EASY_AND_SECURE_SHOPPING' => 'Die beliebtesten Zahlarten. Abgesichert und einfach zu integrieren.',
+    'TCKLARNA_WELCOME_TO_CONFIGURATION' => 'Herzliche willkommen in den Konfigurations-Einstellungen von Klarna Checkout und Klarna Payments. Hier finden Sie alles, was zur Aktivierung benötigt wird. Wählen Sie links ‘in der Leiste die Klarna Unter-Menüpunkte, um die Modul-Einrichtung abzuschließen.',
+
+
     /* design */
     'KL_TEASER'                            => 'Klarna Teaser',
     'KL_ENABLE_TEASER'                     => 'Klarna Teaser in der Top-Animation auf der Startseite einblenden?',
@@ -283,20 +287,28 @@ oder wenden Sie sich an den Klarna Integration Support.',
     'TCKLARNA_B2B_B2C'               => 'Hauptsächlich B2B Kunden, aber auch B2C Kunden',
     'TCKLARNA_B2C_B2B'               => 'Hauptsächlich B2C Kunden, aber auch B2B Kunden',
 
-
+    'TCKLARNA_EMAIL'               => 'Email',
     'TCKLARNA_EASY'                => 'So einfach ist es, Klarna zu aktiveren',
     'TCKLARNA_PAY_LATER.'          => 'Rechnung.',
-    'TCKLARNA_PAY_LATER_START'     => 'Für Kunden, die jetzt kaufen und bequem später bezahlen möchten.',
+    'TCKLARNA_PAY_LATER_START'     => 'Für Kunden, die jetzt kaufen und später bezahlen möchten. Ganz bequem in 14, 21 oder 28 Tagen, je nach Markt.',
+    'TCKLARNA_SLICE_IT'            => 'Ratenkauf.',
     'TCKLARNA_SLICE_IT.'           => 'In Raten bezahlen.',
-    'TCKLARNA_SLICE_IT_START'      => 'Steigern Sie die Kaufkraft Ihrer Kunden durch Zahlung in Raten.',
+    'TCKLARNA_SLICE_IT_START'      => 'Steigern Sie die Kaufkraft Ihrer Kunden durch Zahlung in Raten. Kunden haben die Wahl zwischen flexiblen und fixen Raten, aufgeteilt auf 6 - 36 Monate.',
     'TCKLARNA_PAY_NOW.'            => 'Sofort bezahlen.',
-    'TCKLARNA_PAY_NOW_START'       => 'Einfache und schnelle Direktbezahlung mit Klarna‘s Sofort bezahlen. In Deutschland sollten Sofortüberweisung und Lastschrift im Portfolio nicht fehlen.',
+    'TCKLARNA_PAY_NOW_START'       => 'Einfache und schnelle Direktbezahlung mit Klarna’s Sofort bezahlen. In Deutschland sollten Sofortüberweisung, Kreditkarte und Lastschrift im Portfolio nicht fehlen.',
     'TCKLARNA_CHECKOUT'            => 'Der Klarna Checkout.',
-    'TCKLARNA_CHECKOUT_START'      => 'Das beste Checkout-Erlebnis für Ihre Kunden. Zuverlässige Kundenidentifizierung und Versandauswahl. Alle Zahlungen inklusive. Weltweite Verfügbarkeit, lokal optimiert. Wir übernehmen das ganze Risiko und Sie erhalten immer Ihr Geld. ',
+    'TCKLARNA_CHECKOUT_START'      => 'Das beste Checkout-Erlebnis für Ihre Kunden. Zuverlässige Kundenidentifizierung und Versandauswahl. Alle Zahlungen inklusive Weltweite Verfügbarkeit, lokal optimiert. Wir übernehmen das ganze Risiko und Sie erhalten immer Ihr Geld.',
     'TCKLARNA_REGISTER_NOW_BUTTON' => 'Registrieren',
     'TCKLARNA_LEARN_MORE_BUTTON'   => 'Mehr erfahren',
     'TCKLARNA_NEED_SUPPORT'        => 'Benötigen Sie Hilfe bei der Integration?',
     'TCKLARNA_REACH_SUPPORT'       => 'Kontaktieren Sie Klarna‘s Merchant Support',
+
+    'TCKLARNA_RB_HOW_TO_ACTIVATE'             => 'How-to-activate<br>Klarna guide.',
+    'TCKLARNA_RB_HOW_TO_ACTIVATE_LIST_ONE'    => 'Klicken Sie im OXID Backend auf den neuen Menüpunkt Klarna, die Unterkategorie Allgemein. und wählen anschließend das gewünschte Klarna Produkt aus. Sie haben die Wahl zwischen Klarna Payments und Klarna Checkout.',
+    'TCKLARNA_RB_HOW_TO_ACTIVATE_LIST_TWO'    => 'Geben Sie Ihre Zugangsdaten ein (Benutzername und Passwort) nehmen Sie unter Shopeinstellungen>Zahlungsarten sowie >Versandarten die OXID typischen Zuordnungen für Zahlarten vor.',
+    'TCKLARNA_RB_HOW_TO_ACTIVATE_LIST_THREE'  => 'Speichern Sie die Änderungen.',
+    'TCKLARNA_RB_HOW_TO_ACTIVATE_LIST_FOUR'   => 'Sie sind jetzt online und können anfangen, mit Klarna zu verkaufen.',
+    'TCKLARNA_RB_MERCHANT_SUPPORT'            => 'Merchant Support',
 
     'KL_EU_WARNING' => '<p>Um mit der EU Geoblocking Verordnung übereinzustimmen, wird dringend empfohlen, alle europäischen Länder zu aktivieren und der Bezahlmethode Klarna Checkout zuzweisen.</p><p>Es fehlen folgende Länder: %s</p>',
     

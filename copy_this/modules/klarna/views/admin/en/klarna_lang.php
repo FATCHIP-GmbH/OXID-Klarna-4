@@ -66,6 +66,9 @@ $aLang = array(
     'KL_CREATE_USER_ACCOUNT_AND_SUBSCRIBE' => 'Create Customer Account AND subscribe to Newsletter',
     'KL_NO_CHECKBOX'                       => 'Do not show a Checkbox',
 
+    'TCKLARNA_EASY_AND_SECURE_SHOPPING' => 'The most popular payment methods. Secured and easy to integrate.',
+    'TCKLARNA_WELCOME_TO_CONFIGURATION' => 'Welcome to Klarna’s configuration side. Here you can find everything you need to activate Klarna Payments or Klarna Checkout. Click on the Klarna sub-categories to complete the installation of this module.',
+
     'KL_TEASER'                 => 'Klarna Teaser',
     'KL_ENABLE_TEASER'          => 'Enable Klarna Teaser on top animation of shop homepage?',
     'KL_HOMEPAGE_BANNER'        => 'Homepage Banner',
@@ -286,13 +289,21 @@ For a detailed description of the different settings please see the tool-tip fun
 
     'TCKLARNA_EASY'            => 'It is easy to integrate Klarna',
     'TCKLARNA_PAY_LATER.'      => 'Pay later.',
-    'TCKLARNA_PAY_LATER_START' => 'Provides consumer an invoice, for those who want to buy now, but pay later.',
+    'TCKLARNA_PAY_LATER_START'   => 'For customers that want to buy now but pay later. Easy in 14, 21 or 28 days (depending on market).',
     'TCKLARNA_SLICE_IT.'       => 'Financing.',
-    'TCKLARNA_SLICE_IT_START'  => 'Empower your customers to pay over time.',
+    'TCKLARNA_SLICE_IT_START'    => 'Increase your shoppers purchase power by letting them slice their payments. Customers can chose between fixed and flexible payments splitted in 6 - 36 month.',
     'TCKLARNA_PAY_NOW.'        => 'Pay now.',
-    'TCKLARNA_PAY_NOW_START'   => 'For consumers, who want to pay everything at once Sofort and Direct Debit are perfect solutions.',
+    'TCKLARNA_PAY_NOW_START'     => 'Quick and easy direct payment with Klarna’s Pay Now. In Germany, Sofortüberweisung, credit card and direct debit should not be missing in the portfolio.',
     'TCKLARNA_CHECKOUT'        => 'Klarna‘s Checkout.',
-    'TCKLARNA_CHECKOUT_START'  => 'Klarna’s comprehensive online checkout offers all major popular payment methods in one, integrated solution.',
+    'TCKLARNA_CHECKOUT_START'    => 'The best checkout experience for your customers. Reliable customer identification and shipping selection. All payments including worldwide availability, locally optimized. We take all the risk and you always get your money.',
+
+    'TCKLARNA_RB_HOW_TO_ACTIVATE'             => 'How-to-activate<br>Klarna guide.',
+    'TCKLARNA_RB_HOW_TO_ACTIVATE_LIST_ONE'    => 'In the OXID backend click on the new menu item Klarna, the sub-category “General” and then select the Klarna product you want. You have the choice between Klarna Payments and Klarna Checkout.',
+    'TCKLARNA_RB_HOW_TO_ACTIVATE_LIST_TWO'    => 'Enter your access data (user name and password) and make the OXID-typical assignments for payment methods under Shop settings> Payment methods and> Shipping methods.',
+    'TCKLARNA_RB_HOW_TO_ACTIVATE_LIST_THREE'  => 'Save the changes.',
+    'TCKLARNA_RB_HOW_TO_ACTIVATE_LIST_FOUR'   => 'You are now online and you can start selling with Klarna.',
+    'TCKLARNA_RB_MERCHANT_SUPPORT'            => 'Merchant support',
+    'TCKLARNA_EMAIL'                        => 'Email',
 
     'TCKLARNA_REGISTER_NOW_BUTTON' => 'Register now',
     'TCKLARNA_LEARN_MORE_BUTTON'   => 'Learn more',
