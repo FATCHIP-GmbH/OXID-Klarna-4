@@ -291,6 +291,7 @@ For a detailed description of the different settings please see the tool-tip fun
     'TCKLARNA_PAY_LATER.'      => 'Pay later.',
     'TCKLARNA_PAY_LATER_START'   => 'For customers that want to buy now but pay later. Easy in 14, 21 or 28 days (depending on market).',
     'TCKLARNA_SLICE_IT.'       => 'Financing.',
+    'TCKLARNA_SLICE_IT'         => 'Financing.',
     'TCKLARNA_SLICE_IT_START'    => 'Increase your shoppers purchase power by letting them slice their payments. Customers can chose between fixed and flexible payments splitted in 6 - 36 month.',
     'TCKLARNA_PAY_NOW.'        => 'Pay now.',
     'TCKLARNA_PAY_NOW_START'     => 'Quick and easy direct payment with Klarna’s Pay Now. In Germany, Sofortüberweisung, credit card and direct debit should not be missing in the portfolio.',
@@ -316,4 +317,6 @@ For a detailed description of the different settings please see the tool-tip fun
     'TCKLARNA_SHIPPING_KCO_DESC' => 'Please assign your defined shipping sets to the corresponding Klarna labels. By this assignment you can amongst others enable Packstation deliveries.',
     'TCKLARNA_SHIPPING_SETTINGS' => 'Shipping sets',
     'TCKLARNA_PACKSTATION_NO_SHIPPING_SET' => 'No active shipping sets found',
+    'TCKLARNA_USER_GUIDE_DESCRIPTION'        => 'Click here for download of latest documentation PDF of Klarna extension for OXID eShop',
+    'TCKLARNA_DEVICE_IMG'                    => 'device-en.png',
 );

@@ -34,7 +34,7 @@
                 <p>[{oxmultilang ident="TCKLARNA_PAY_LATER_START"}]</p>
             </div>
             <div class="w3 p-lr-15">
-                <h4>[{oxmultilang ident="TCKLARNA_SLICE_IT"}]</h4>
+                <h4>[{oxmultilang ident="TCKLARNA_SLICE_IT."}]</h4>
                 <p>[{oxmultilang ident="TCKLARNA_SLICE_IT_START"}]</p>
             </div>
             <div class="w3 p-lr-15">
@@ -49,7 +49,7 @@
     </div>
     <div class="klarna-header info">
         <div class="w6 img-outer">
-            <img class="device-img" src="[{$oViewConf->getKlarnaModuleUrl('out/admin/img/')}]device.png">
+            <img class="device-img" src="[{$oViewConf->getKlarnaModuleUrl('out/admin/img/')}][{oxmultilang ident="TCKLARNA_DEVICE_IMG"}]">
         </div>
         <div class="w6 ml-half">
             <div>
