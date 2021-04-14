@@ -316,4 +316,6 @@ oder wenden Sie sich an den Klarna Integration Support.',
     'TCKLARNA_SHIPPING_KCO_DESC' => 'Bitte ordnen Sie Ihren definierten Versandarten die entsprechenden Klarna Bezeichnungen zu. Über diese Zuordnung richten Sie unter anderem die Lieferung an Packstationen ein.',
     'TCKLARNA_SHIPPING_SETTINGS' => 'Versandarten',
     'TCKLARNA_PACKSTATION_NO_SHIPPING_SET' => 'Keine aktiven Versandarten gefunden',
+    'TCKLARNA_DEVICE_IMG'                    => 'device.png',
+    'TCKLARNA_USER_GUIDE_DESCRIPTION' => 'Laden Sie hier das Benutzerhandbuch für das Klarna Modul für den OXID eShop als PDF-Dokument herunter.',
 );

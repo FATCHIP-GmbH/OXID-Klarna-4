@@ -69,6 +69,7 @@ $aLang = array(
 
     'KL_ANONYMIZED_PRODUCT'                  => 'Anonymisierter Produkttitel:',
 
+    'TCKLARNA_USER_GUIDE_DESCRIPTION'        => 'Laden Sie hier das Benutzerhandbuch für das Klarna Modul für den OXID eShop als PDF-Dokument herunter.',
     'TCKLARNA_EASY_AND_SECURE_SHOPPING'      => 'Die beliebtesten Zahlarten. Abgesichert und einfach zu integrieren.',
     'TCKLARNA_WELCOME_TO_CONFIGURATION'      => 'Herzliche willkommen in den Konfigurations-Einstellungen von Klarna Checkout und Klarna Payments. Hier finden Sie alles, was zur Aktivierung benötigt wird. Wählen Sie links ‘in der Leiste die Klarna Unter-Menüpunkte, um die Modul-Einrichtung abzuschließen.',
     'TCKLARNA_EMAIL'                         => 'Email',
@@ -83,5 +84,6 @@ $aLang = array(
     'TCKLARNA_RB_HOW_TO_ACTIVATE_LIST_THREE' => 'Speichern Sie die Änderungen.',
     'TCKLARNA_RB_HOW_TO_ACTIVATE_LIST_FOUR'  => 'Sie sind jetzt online und können anfangen, mit Klarna zu verkaufen.',
     'TCKLARNA_RB_MERCHANT_SUPPORT'           => 'Merchant Support',
+    'TCKLARNA_DEVICE_IMG'                    => 'device.png',
 
 );
