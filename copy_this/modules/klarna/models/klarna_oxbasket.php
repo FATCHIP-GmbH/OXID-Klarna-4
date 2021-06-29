@@ -435,7 +435,14 @@ class klarna_oxbasket extends klarna_oxbasket_parent
      */
     public function kl_calculateDeliveryCost()
     {
+        $oDeliveryList = oxNew('oxDeliveryList');
+        oxRegistry::set('oxDeliveryList', $oDeliveryList);
         return parent::_calcDeliveryCost();
+    }
+
+    protected function _calcDeliveryCost()
+    {
+        return KlarnaUtils::isKlarnaPaymentsEnabled()?$this->kl_calculateDeliveryCost():parent::_calcDeliveryCost();
     }
 
     /**
