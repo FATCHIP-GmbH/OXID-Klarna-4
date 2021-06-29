@@ -1,3 +1,7 @@
+### 4.6.2
+* Fix spelling on new Klarna admin start page DE/EN
+* Bugfix: Shipping costs add up
+
 ### 4.6.1
 * Fix conflicts with payone module
 

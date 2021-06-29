@@ -6,7 +6,7 @@ Klarna Checkout and Klarna Payments Module for the OXID eShop
 ### Title: Klarna Checkout and Klarna Payments Module for the OXID eShop
 ### Author: cgrd GmbH, https://www.cgrd.de/oxid-eshop
 ### Prefix: klarna
-### Version: 4.6.1
+### Version: 4.6.2
 ### Link: https://www.klarna.com/de/verkaeufer/plattformen-und-partner/oxid/
 ### Mail: oxid@klarna.com
 
@@ -16,8 +16,8 @@ OXID eShop Plugin to integrate Klarna Checkout and Klarna Payments to OXID eShop
 
 ## Installation ##
 
-See klarna-module-for-oxid-en-4.6.1.pdf (English)
-or klarna-module-for-oxid-de-4.6.1.pdf (German)
+See klarna-module-for-oxid-en-4.6.2.pdf (English)
+or klarna-module-for-oxid-de-4.6.2.pdf (German)
 
   
 
@@ -25,5 +25,5 @@ or klarna-module-for-oxid-de-4.6.1.pdf (German)
 
 See pdf files in this package or download latest manuals here:
 
-### In English: https://www.cgrd.de/customer/klarna/docs/klarna-module-for-oxid-en-4.6.1.pdf
-### In German: https://www.cgrd.de/customer/klarna/docs/klarna-module-for-oxid-de-4.6.1.pdf
+### In English: https://www.cgrd.de/customer/klarna/docs/klarna-module-for-oxid-en-4.6.2.pdf
+### In German: https://www.cgrd.de/customer/klarna/docs/klarna-module-for-oxid-de-4.6.2.pdf
