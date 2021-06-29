@@ -71,11 +71,11 @@ $aLang = array(
 
     'TCKLARNA_USER_GUIDE_DESCRIPTION'        => 'Click here for download of latest documentation PDF of Klarna extension for OXID eShop',
     'TCKLARNA_EASY_AND_SECURE_SHOPPING'      => 'The most popular payment methods. Secured and easy to integrate.',
-    'TCKLARNA_WELCOME_TO_CONFIGURATION'      => 'Welcome to Klarna’s configuration side. Here you can find everything you need to activate Klarna Payments or Klarna Checkout. Click on the Klarna sub-categories to complete the installation of this module.',
+    'TCKLARNA_WELCOME_TO_CONFIGURATION'      => 'Welcome to Klarna’s configuration section. Here you can find everything you need to activate Klarna Payments or Klarna Checkout. Click on the Klarna sub-categories to complete the installation of this module.',
     'TCKLARNA_EMAIL'                         => 'Email',
     'TCKLARNA_PAY_LATER_START'               => 'For customers that want to buy now but pay later. Easy in 14, 21 or 28 days (depending on market).',
     'TCKLARNA_SLICE_IT'                      => 'Financing',
-    'TCKLARNA_SLICE_IT_START'                => 'Increase your shoppers purchase power by letting them slice their payments. Customers can chose between fixed and flexible payments splitted in 6 - 36 month.',
+    'TCKLARNA_SLICE_IT_START'                => 'Increase your shoppers purchase power by letting them slice their payments. Customers can choose between fixed and flexible payments split in 6 - 36 months.',
     'TCKLARNA_PAY_NOW_START'                 => 'Quick and easy direct payment with Klarna’s Pay Now. In Germany, Sofortüberweisung, credit card and direct debit should not be missing in the portfolio.',
     'TCKLARNA_CHECKOUT_START'                => 'The best checkout experience for your customers. Reliable customer identification and shipping selection. All payments including worldwide availability, locally optimized. We take all the risk and you always get your money.',
     'TCKLARNA_RB_HOW_TO_ACTIVATE'            => 'How-to-activate<br>Klarna guide.',
